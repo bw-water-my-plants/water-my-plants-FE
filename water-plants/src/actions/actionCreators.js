@@ -1,4 +1,6 @@
 import * as types from './actionTypes';
+import axiosWithAuth from '../axios/axiosWithAuth';
+
 const baseURL = 'https://water-my-plants-api.herokuapp.com/api/';
 
 const CreateAPIUrl = (extension) => {
@@ -20,5 +22,14 @@ export const setError = (err) => {
 }
 
 export const fetchPlants = () => dispatch => {
-
+    dispatch({ type: types.FETCHING_PLANTS });
+    return axiosWithAuth()
+        .get(CreateAPIUrl('plants'))
+        .then(res => {
+            dispatch(setPlants(res.data));
+            dispatch({ type: types.FETCH_SUCCESS });
+        })
+        .catch(error => {
+            dispatch(setError(error.message));
+        })
 }
