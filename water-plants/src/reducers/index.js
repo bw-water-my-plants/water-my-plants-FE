@@ -1,6 +1,11 @@
 import { combineReducers } from 'redux';
 import * as types from '../actions/actionTypes';
 
+export default combineReducers({
+    plants: plantsReducer,
+    api: apiReducer,
+});
+
 const plantState = {
     plants: null,
 }
