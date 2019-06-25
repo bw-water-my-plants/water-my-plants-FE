@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Colors from '../../styling/colors';
-import exampleImage from '../../../assets/images/example_plant.jfif';
+import exampleImage from '../../assets/images/example_plant.jfif';
 const Card = styled.li`
     width: 90vw;
     height: 20vw;
@@ -10,25 +10,34 @@ const Card = styled.li`
     display: flex;
     justify-content: space-between;
     padding: 0;
+    margin: 0 auto;
 `;
 
 const PlantProfile = styled.div`
-    flex-grow: 3;
+    flex-grow: 10;
     display: flex;
-    justify-content: flex-start;
-
+    justify-content: space-between;
+    align-items: center;
     &::after {
+        content: '';
         height:85%;
-        width:1;
+        width:1px;
         border-right: 1px solid black;
         opacity: 0.1;
     }
 `;
 
 const InfoBox = styled.div`
-    flex-grow: 1;
+    flex-grow: 4;
     display: flex;
     align-items: center;
+    justify-content: center;
+`;
+
+const PlantName = styled.header`
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 `;
 
@@ -41,6 +50,10 @@ export default function PlantCard(props) {
         <Card>
             <PlantProfile>
                 <PlantImage src={exampleImage} alt="Plant"/>
+                <PlantName>
+                    <h2>Plant Name</h2>
+                    <h3>Species Name</h3>
+                </PlantName>
             </PlantProfile>
 
             <InfoBox>
