@@ -1,14 +1,15 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from 'redux-thunk';
 import "./App.css";
 import './styling/reset.css';
 import Plant from './components/PlantList/PlantCard';
-import ShowComponent from "./component/ShowComponent"
+import combinedReducers from './reducers';
 
 
 
-const initialState = {
+/* const initialState = {
   count: 0
 }
 const counterReducer = (state = initialState, action) => {
@@ -26,9 +27,16 @@ const counterReducer = (state = initialState, action) => {
       default:
       return state;
     }
-}
+} */
 
-const store = createStore(counterReducer);
+const store = createStore(
+  combinedReducers,
+  {},
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  ),
+);
 
 function App() {
   return (
@@ -36,7 +44,6 @@ function App() {
       <div className="App">
         <h1>HELLO WORLD</h1>
         <Plant/>
-        <ShowComponent />
       </div>
     </Provider>
   );
