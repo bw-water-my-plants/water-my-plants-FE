@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import axiosWithAuth from '../axios/axiosWithAuth';
+import axios from 'axios';
 
 const baseURL = 'https://water-my-plants-api.herokuapp.com/api/';
 
@@ -31,5 +32,18 @@ export const fetchPlants = () => dispatch => {
         })
         .catch(error => {
             dispatch(setError(error.message));
+        });
+}
+
+export const login = () =>  dispatch => {
+    dispatch({ type: types.LOGGING_IN });
+    return axios
+        .post(CreateAPIUrl('auth/login'))
+        .then(res => {
+            localStorage.setItem('token', res.data);
+            dispatch({ type: types.LOGIN_SUCCESS });
         })
+        .catch(error => {
+            dispatch({ type: types.LOGIN_FAIL });
+        });
 }
