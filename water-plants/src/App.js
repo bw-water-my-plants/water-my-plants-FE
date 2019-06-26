@@ -6,7 +6,8 @@ import { createStore, applyMiddleware, compose } from "redux";
 import thunk from 'redux-thunk';
 import "./App.css";
 import './styling/reset.css';
-import PlantList from './components/PlantList/PlantList';
+import MainView from './views/MainView';
+
 import combinedReducers from './reducers';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
@@ -40,7 +41,7 @@ function App() {
       <Router>
         <Route path='/signup' component={SignupPage} />
         <Route path='/login' component={LoginPage} />
-        <PrivateRoute exact path='/' component={PlantList} />
+        <PrivateRoute exact path='/' component={MainView} />
       </Router>
     </Provider>
   );

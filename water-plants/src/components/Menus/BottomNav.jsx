@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Colors from '../../styling/colors';
 import { XIcon } from '../Vectors/Elements';
+import { CupIcon } from '../Vectors/InfoIcons';
 import { connect } from 'react-redux';
 
 const Bar = styled.nav`
@@ -12,6 +13,7 @@ const Bar = styled.nav`
     background-color: ${Colors.Primary};
     display: flex;
     justify-content: space-around;
+    bottom: 0;
 `;
 
 const NavButton = styled.button`
@@ -20,14 +22,24 @@ const NavButton = styled.button`
     align-items: center;
     background: none;
     border: none;
+
+    &.delete svg{
+        transform: rotate(45deg);
+    }
 `;
-export class BottomNav extends React.Component {
+export default class BottomNav extends React.Component {
 
     render() {
         return (
             <Bar>
                 <NavButton>
-                    <XIcon color='white' svgHeight='70%' />
+                    <XIcon color='white' svgHeight='70%' svgWidth='3rem' strokeWidth='1px'/>
+                </NavButton>
+                <NavButton>
+                    <CupIcon color='white' svgHeight='70%' svgWidth='2.2rem' strokeWidth='12px'/>
+                </NavButton>
+                <NavButton className='delete'>
+                    <XIcon color='white' svgHeight='70%' svgWidth='3rem' strokeWidth='1px'/>
                 </NavButton>
             </Bar>
         );
