@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // TODO: Pull styled components out to another file
 export const PathSVG = styled.svg`
     ${props => (props.svgHeight ? `height: ${props.svgHeight};` : null)}
-    ${props => (props.svgWidth ? `width: ${props.svgHeight};` : null)}
+    ${props => (props.svgWidth ? `width: ${props.svgWidth};` : null)}
     .paths{
         fill: none;
         stroke: ${props => (props.color ? props.color : '#0097e2')};
@@ -15,7 +15,7 @@ export const PathSVG = styled.svg`
 
 export const ShapeSVG = styled.svg`
     ${props => (props.svgHeight ? `height: ${props.svgHeight};` : null)}
-    ${props => (props.svgWidth ? `width: ${props.svgHeight};` : null)}
+    ${props => (props.svgWidth ? `width: ${props.svgWidth};` : null)}
     .paths{
         fill: ${props => (props.color ? props.color : '#0097e2')};
         stroke: ${props => (props.color ? props.color : '#0097e2')};

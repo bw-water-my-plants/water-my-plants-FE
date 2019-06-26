@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Colors from '../../styling/colors';
 import exampleImage from '../../assets/images/example_plant.jfif';
 import { ClockIcon, CupIcon, HeightIcon } from '../Vectors/InfoIcons';
+import { WaterOverlay } from '../Vectors/Elements';
+
 const Card = styled.li`
     font-family: 'Roboto', sans-serif;
     width: 90vw;
@@ -151,6 +153,31 @@ const PlantImage = styled.div`
         }
     }}
 `;
+
+const WaterMe = styled.button`
+    background: none;
+    background-color: white;
+    padding: 0.6rem 6.4rem;
+    color: ${Colors.Light};
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 1.2rem;
+    position: relative;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    svg{
+        position: absolute;
+        z-index: 0;
+        left: 0;
+        bottom: 0;
+    }
+    span{
+        z-index: 1;
+    }
+`;
 export default function PlantCard(props) {
     return(
         <Card>
@@ -159,6 +186,10 @@ export default function PlantCard(props) {
                 <PlantName>
                     <h2>Plant Name</h2>
                     <h3>Species Name</h3>
+                    <WaterMe>
+                        <WaterOverlay svgHeight='90%' svgWidth='100%'/>
+                        <span>Water Me</span>
+                    </WaterMe>
                 </PlantName>
             </PlantProfile>
 
