@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const PathSVG = styled.svg`
+// TODO: Pull styled components out to another file
+export const PathSVG = styled.svg`
     ${props => (props.svgHeight ? `height: ${props.svgHeight};` : null)}
     ${props => (props.svgWidth ? `width: ${props.svgHeight};` : null)}
     .paths{
@@ -12,7 +13,7 @@ const PathSVG = styled.svg`
     }
 `;
 
-const ShapeSVG = styled.svg`
+export const ShapeSVG = styled.svg`
     ${props => (props.svgHeight ? `height: ${props.svgHeight};` : null)}
     ${props => (props.svgWidth ? `width: ${props.svgHeight};` : null)}
     .paths{
