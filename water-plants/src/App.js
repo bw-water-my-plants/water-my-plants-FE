@@ -1,4 +1,5 @@
 import React from "react";
+import SignupPage from "./components/SignupPage";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from 'redux-thunk';
@@ -39,8 +40,10 @@ const store = createStore(
 );
 
 function App() {
+
   return (
     <Provider store={store}>
+      <SignupPage />
       <div className="App">
         <h1>HELLO WORLD</h1>
         <Plant/>
