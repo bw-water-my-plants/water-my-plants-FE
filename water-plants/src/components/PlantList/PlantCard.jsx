@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Colors from '../../styling/colors';
 import exampleImage from '../../assets/images/example_plant.jfif';
+import { ClockIcon } from '../Vectors/InfoIcons';
 const Card = styled.li`
     font-family: 'Roboto', sans-serif;
     width: 90vw;
@@ -69,7 +70,7 @@ export default function PlantCard(props) {
             </PlantProfile>
 
             <InfoBox>
-
+                <ClockIcon heigth='40' width='40'/>
             </InfoBox>
         </Card>
     )
