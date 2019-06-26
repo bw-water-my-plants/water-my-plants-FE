@@ -34,6 +34,19 @@ const InfoBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
+`;
+
+const InfoItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    
+    span{
+        font-size: 1.2em;
+    }
 `;
 
 const PlantName = styled.header`
@@ -70,7 +83,10 @@ export default function PlantCard(props) {
             </PlantProfile>
 
             <InfoBox>
-                <HeightIcon svgHeight='80%' svgWidth='80%' strokeWidth='0px'/>
+                <InfoItem>
+                    <ClockIcon svgHeight='60%' svgWidth='60%' strokeWidth='12px'/>
+                    <span>5 days</span>
+                </InfoItem>
             </InfoBox>
         </Card>
     )

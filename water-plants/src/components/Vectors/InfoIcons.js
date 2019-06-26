@@ -2,10 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const PathSVG = styled.svg`
-    ${props => (`
-        width: ${props.svgWidth};
-        height: ${props.svgHeight};
-    `)};
+    ${props => (props.svgHeight ? `height: ${props.svgHeight};` : null)}
+    ${props => (props.svgWidth ? `width: ${props.svgHeight};` : null)}
     .paths{
         fill: none;
         stroke: ${props => (props.color ? props.color : '#0097e2')};
@@ -15,10 +13,8 @@ const PathSVG = styled.svg`
 `;
 
 const ShapeSVG = styled.svg`
-    ${props => (`
-        width: ${props.svgWidth};
-        height: ${props.svgHeight};
-    `)};
+    ${props => (props.svgHeight ? `height: ${props.svgHeight};` : null)}
+    ${props => (props.svgWidth ? `width: ${props.svgHeight};` : null)}
     .paths{
         fill: ${props => (props.color ? props.color : '#0097e2')};
         stroke: ${props => (props.color ? props.color : '#0097e2')};
