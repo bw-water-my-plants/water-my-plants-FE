@@ -50,6 +50,9 @@ const PlantProfile = styled.div`
                     border-right: 1px solid black;
                     opacity: 0.1;
                 }
+                button {
+                    display: none;
+                }
             `)
         }
     }}
@@ -74,7 +77,9 @@ const InfoBox = styled.div`
                 > div{
                     display: none;
                 }
-
+                > button{
+                    display: none;
+                }
                 div:last-child{
                     display: flex;
                 }
@@ -141,7 +146,7 @@ const PlantImage = styled.div`
     background-size: cover;
     background-position: center;
     background-color: transparent;
-    width: 20vw;
+    min-width: 20vw;
     height: 20vw;
     ${props => {
         if(!props.closed) {
@@ -187,9 +192,9 @@ const WaterMe = styled.button`
 `;
 export default function PlantCard(props) {
     return(
-        <Card>
-            <PlantProfile>
-                <PlantImage imgUrl={exampleImage}/>
+        <Card closed>
+            <PlantProfile closed>
+                <PlantImage imgUrl={exampleImage} closed/>
                 <MidContainer>
                     <PlantName>
                         <h2>Plant Name</h2>
@@ -202,7 +207,7 @@ export default function PlantCard(props) {
                     </MidContainer>
             </PlantProfile>
 
-            <InfoBox>
+            <InfoBox closed>
                 <LearnMore>Learn more...</LearnMore>
                 <InfoItem>
                     <HeightIcon svgHeight='30%'strokeWidth='0px' color={Colors.Tertiary}/>
