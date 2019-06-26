@@ -120,7 +120,6 @@ const InfoItem = styled.div`
 `;
 
 const PlantName = styled.header`
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -154,10 +153,17 @@ const PlantImage = styled.div`
     }}
 `;
 
+const MidContainer = styled.div`
+    display: flex;
+    flex-grow: 1;
+    align-items: flex-start;
+    padding-top: 0.6rem;
+    width: 100%;
+`;
 const WaterMe = styled.button`
     background: none;
     background-color: white;
-    padding: 0.6rem 6.4rem;
+    padding: 0.8rem 6.4rem;
     color: ${Colors.Light};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-size: 1.2rem;
@@ -168,6 +174,7 @@ const WaterMe = styled.button`
     justify-content: center;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
+    margin-left: 15%;
     svg{
         position: absolute;
         z-index: 0;
@@ -183,28 +190,30 @@ export default function PlantCard(props) {
         <Card>
             <PlantProfile>
                 <PlantImage imgUrl={exampleImage}/>
-                <PlantName>
-                    <h2>Plant Name</h2>
-                    <h3>Species Name</h3>
+                <MidContainer>
+                    <PlantName>
+                        <h2>Plant Name</h2>
+                        <h3>Species Name</h3>
+                    </PlantName>
                     <WaterMe>
                         <WaterOverlay svgHeight='90%' svgWidth='100%'/>
                         <span>Water Me</span>
                     </WaterMe>
-                </PlantName>
+                    </MidContainer>
             </PlantProfile>
 
             <InfoBox>
                 <LearnMore>Learn more...</LearnMore>
                 <InfoItem>
-                    <HeightIcon svgHeight='50%' svgWidth='60%' strokeWidth='0px' color={Colors.Tertiary}/>
+                    <HeightIcon svgHeight='30%'strokeWidth='0px' color={Colors.Tertiary}/>
                     <span>12 cm</span>
                 </InfoItem>
                 <InfoItem>
-                    <CupIcon svgHeight='60%' svgWidth='60%' strokeWidth='12px' color={Colors.Tertiary}/>
+                    <CupIcon svgHeight='40%' strokeWidth='18px' color={Colors.Tertiary}/>
                     <span>60%</span>
                 </InfoItem>
                 <InfoItem>
-                    <ClockIcon svgHeight='60%' svgWidth='60%' strokeWidth='12px' color={Colors.Tertiary}/>
+                    <ClockIcon svgHeight='40%' strokeWidth='18px' color={Colors.Tertiary}/>
                     <span>5 days</span>
                 </InfoItem>
             </InfoBox>
