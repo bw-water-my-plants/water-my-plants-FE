@@ -1,17 +1,20 @@
 import React from "react";
 import {  WrappedRegistrationForm }  from "./SignupForm";
 import { connect } from "react-redux"
-import { userSignupRequest } from "./Actions/SignupActions"
+import { WrappedNormalLoginForm } from "./LoginForm"
+//import { userSignupRequest, userLoginRequest } from "./Actions/SignupActions"
+import { register, login } from "../actions/actionCreators"
 
 import PropTypes from 'prop-types';
 
 class SignupPage extends React.Component {
   render() {
-    const { userSignupRequest } = this.props;
+    const { register, login } = this.props;
     return (
         <div>
-      
-            < WrappedRegistrationForm  userSignupRequest={userSignupRequest}  />
+             
+            < WrappedRegistrationForm  register={register}  />
+            <WrappedNormalLoginForm login={login} />
 
         </div>
     )
@@ -21,4 +24,4 @@ SignupPage.propTypes = {
     userSignupRequest: PropTypes.func.isRequired
 } 
 
-export default connect(null,{ userSignupRequest })(SignupPage);
+export default connect(null,{ register, })(SignupPage);
