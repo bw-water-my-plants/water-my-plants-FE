@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { ShapeSVG } from './InfoIcons';
+import { ShapeSVG, PathSVG } from './InfoIcons';
 
 export function WaterOverlay(props) {
     return (
@@ -24,4 +24,19 @@ export function WaterOverlay(props) {
         </g>
       </ShapeSVG>
     )
+}
+
+export function XIcon(props) {
+  return (
+    <PathSVG
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 26 25"
+      {...props}
+    >
+      <g>
+        <line className='paths' x1="13.5" y1="2.18557e-08" x2="13.5" y2="25" />
+        <line className='paths' x1="25.5" y1="12" x2="0.5" y2="12" />
+      </g>
+    </PathSVG>
+  );
 }
