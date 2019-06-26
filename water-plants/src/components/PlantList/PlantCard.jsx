@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Colors from '../../styling/colors';
 import exampleImage from '../../assets/images/example_plant.jfif';
 const Card = styled.li`
+    font-family: 'Roboto', sans-serif;
     width: 90vw;
     height: 20vw;
     background: ${Colors.Light};
@@ -14,7 +15,7 @@ const Card = styled.li`
 `;
 
 const PlantProfile = styled.div`
-    flex-grow: 10;
+    width: 78%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,7 +29,7 @@ const PlantProfile = styled.div`
 `;
 
 const InfoBox = styled.div`
-    flex-grow: 4;
+    width: 22%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,6 +40,17 @@ const PlantName = styled.header`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
+    padding-left: 1rem;
+    line-height: 1.6;
+    h3{
+        font-style: italic;
+        opacity: 0.5;
+        font-size: 1.2em;
+    }
+    h2{
+        font-size: 1.4em;
+    }
 `;
 
 const PlantImage = styled.img`
