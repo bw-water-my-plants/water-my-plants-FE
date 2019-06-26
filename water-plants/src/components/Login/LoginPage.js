@@ -2,7 +2,7 @@
 import { connect } from "react-redux"
 import { WrappedNormalLoginForm } from "./Login"
 //import { userSignupRequest, userLoginRequest } from "./Actions/SignupActions"
-import { login } from "../actions/actionCreators"
+import { login } from "../../actions/actionCreators"
 
 import PropTypes from 'prop-types';
 

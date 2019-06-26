@@ -1,5 +1,6 @@
 import React from "react";
 import SignupPage from "./components/Signup/SignupPage";
+import LoginPage from './components/Login/LoginPage';
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from 'redux-thunk';
@@ -35,6 +36,7 @@ function App() {
     <Provider store={store}>
       <Router>
         <Route path='/signup' component={SignupPage} />
+        <Route path='/login' component={LoginPage} />
         <PrivateRoute exact path='/' component={PlantList} />
       </Router>
     </Provider>
