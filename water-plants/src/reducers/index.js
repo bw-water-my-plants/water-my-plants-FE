@@ -15,10 +15,13 @@ const apiState = {
     loggedIn: false,
 }
 
+
 export default combineReducers({
     plants: plantsReducer,
     api: apiReducer,
 });
+
+
 export function plantsReducer(state = plantState, action) {
     switch(action.type) {
         case(types.SET_PLANTS):
