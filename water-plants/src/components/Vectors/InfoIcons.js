@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ClockSVG = styled.svg`
+const PathSVG = styled.svg`
     ${props => (`
         width: ${props.svgWidth};
         height: ${props.svgHeight};
@@ -16,11 +16,30 @@ const ClockSVG = styled.svg`
 
 export function ClockIcon(props) {
     return (
-      <ClockSVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 267 267" {...props}>
-          <g>
-            <circle className="paths" cx="133.5" cy="133.5" r="127.5" />
-            <polyline className="paths" points="161 108 133 133 133 48" />
-          </g>
-      </ClockSVG>
+      <PathSVG
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 267 267"
+        {...props}
+      >
+        <g>
+          <circle className="paths" cx="133.5" cy="133.5" r="127.5" />
+          <polyline className="paths" points="161 108 133 133 133 48" />
+        </g>
+      </PathSVG>
+    );
+}
+
+export function CupIcon(props) {
+    return (
+      <PathSVG
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 220.86 291.98"
+        {...props}
+      >
+        <g>
+        <path className="paths"
+                d="M214.94,1,196.41,113.33,167.94,286h-121L5.94,1m190,113c-15.06,5-37.46,11.12-61.92,6-22.25-4.66-30.12-14.39-49.31-16-13.7-1.16-34,1.74-60.77,22" />
+        </g>
+      </PathSVG>
     );
 }
