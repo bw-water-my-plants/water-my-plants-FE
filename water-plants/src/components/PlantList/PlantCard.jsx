@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Colors from '../../styling/colors';
 import exampleImage from '../../assets/images/example_plant.jfif';
-import { ClockIcon, CupIcon } from '../Vectors/InfoIcons';
+import { ClockIcon, CupIcon, HeightIcon } from '../Vectors/InfoIcons';
 const Card = styled.li`
     font-family: 'Roboto', sans-serif;
     width: 90vw;
@@ -70,7 +70,7 @@ export default function PlantCard(props) {
             </PlantProfile>
 
             <InfoBox>
-                <CupIcon svgHeight='80%' svgWidth='80%'/>
+                <HeightIcon svgHeight='80%' svgWidth='80%' strokeWidth='0px'/>
             </InfoBox>
         </Card>
     )
