@@ -89,7 +89,11 @@ const PlantName = styled.header`
     }
 `;
 
-const PlantImage = styled.img`
+const PlantImage = styled.div`
+    background: url(${props => props.imgUrl});
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
     width: 20vw;
     height: 20vw;
 `;
@@ -97,7 +101,7 @@ export default function PlantCard(props) {
     return(
         <Card>
             <PlantProfile>
-                <PlantImage src={exampleImage} alt="Plant"/>
+                <PlantImage imgUrl={exampleImage}/>
                 <PlantName>
                     <h2>Plant Name</h2>
                     <h3>Species Name</h3>
