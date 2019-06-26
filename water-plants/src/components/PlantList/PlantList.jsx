@@ -8,7 +8,6 @@ export class PlantList extends React.Component {
         this.props.fetchPlants();
     }
     render() {
-
         return(
             <ul>
                 {
