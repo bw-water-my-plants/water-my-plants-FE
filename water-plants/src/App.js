@@ -11,13 +11,20 @@ import combinedReducers from './reducers';
 
 
 
-const store = createStore(
+/* const store = createStore(
   combinedReducers,
   {},
   compose(
     applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   ),
+); */
+
+// Phone testing: Redux Devtools break mobile views
+const store = createStore(
+  combinedReducers,
+  {},
+  applyMiddleware(thunk),
 );
 
 function App() {

@@ -3,7 +3,7 @@ import * as types from '../actions/actionTypes';
 
 
 const plantState = {
-    plants: null,
+    plants: {},
 }
 
 const apiState = {
