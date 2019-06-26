@@ -27,7 +27,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const store = createStore(
   combinedReducers,
   {},
-  applyMiddleware(thunk),
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  ),
 );
 
 function App() {

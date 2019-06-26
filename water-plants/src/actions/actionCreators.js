@@ -10,7 +10,7 @@ const CreateAPIUrl = (extension) => {
 
 export const setPlants = (plants) => {
     return {
-        types: types.SET_PLANTS,
+        type: types.SET_PLANTS,
         payload: plants,
     };
 }
@@ -23,14 +23,16 @@ export const setError = (err) => {
 }
 
 export const fetchPlants = () => dispatch => {
-    dispatch({ type: types.FETCHING_PLANTS });
+    dispatch({ type: types.FETCHING_PLANTS });  
     return axiosWithAuth()
         .get(CreateAPIUrl('plants'))
         .then(res => {
+            console.log('Success');
             dispatch(setPlants(res.data));
             dispatch({ type: types.FETCH_SUCCESS });
         })
         .catch(error => {
+            console.log('Error');
             dispatch(setError(error.message));
         });
 }
