@@ -13,6 +13,14 @@ const Card = styled.li`
     justify-content: space-between;
     padding: 0;
     margin: 0 auto;
+
+    ${props => {
+        if(!props.closed) {
+            return(`
+                height: 80vw;
+            `)
+        }
+    }}
 `;
 
 const PlantProfile = styled.div`
@@ -35,6 +43,20 @@ const InfoBox = styled.div`
     align-items: center;
     justify-content: center;
     height: 100%;
+
+    ${props => {
+        if(props.closed) {
+            return(`
+                > div{
+                    display: none;
+                }
+
+                div:last-child{
+                    display: flex;
+                }
+            `)
+        }
+    }}
 `;
 
 const InfoItem = styled.div`
@@ -82,7 +104,15 @@ export default function PlantCard(props) {
                 </PlantName>
             </PlantProfile>
 
-            <InfoBox>
+            <InfoBox closed>
+                <InfoItem>
+                    <HeightIcon svgHeight='60%' svgWidth='60%' strokeWidth='0px'/>
+                    <span>12 cm</span>
+                </InfoItem>
+                <InfoItem>
+                    <CupIcon svgHeight='60%' svgWidth='60%' strokeWidth='12px'/>
+                    <span>60%</span>
+                </InfoItem>
                 <InfoItem>
                     <ClockIcon svgHeight='60%' svgWidth='60%' strokeWidth='12px'/>
                     <span>5 days</span>
