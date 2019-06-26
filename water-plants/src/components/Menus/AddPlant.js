@@ -5,7 +5,7 @@ import Colors from '../../styling/colors';
 const Container = styled.div`
     height: 100%;
     width: 100%;
-    background-color: ${Colors.Primary};
+    background-color: ${Colors.Light};
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -17,7 +17,12 @@ const Container = styled.div`
 `;
 
 const PlantForm = styled.form`
-    width: 80%;
+    width: 90%;
+
+    h2{
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
     input{
         background: none;
         border: none;
@@ -25,7 +30,26 @@ const PlantForm = styled.form`
         border-bottom: 1px solid black;
         width: 80%;
         height: 2rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.2s;
+
+        &:focus{
+            outline: none;
+            border-bottom-color: ${Colors.Primary};
+        }
     }
+
+    .height-input{
+        input{
+            width:25%;
+        }
+
+        span{
+            font-size: 1.6rem;
+            margin-left: 1.6rem;
+        }
+    } 
+
 `;
 
 export function AddPlant(props) {
@@ -44,10 +68,14 @@ export function AddPlant(props) {
                     name='type'
                 />
                 <h2>Height</h2>
-                <input
-                    type='number'
-                    name='height'
-                />
+                <span className="height-input">
+                    <input
+                        type='number'
+                        name='height'
+                    />
+
+                    <span>cm</span>
+                </span>
             </PlantForm>
         </Container>
     );
