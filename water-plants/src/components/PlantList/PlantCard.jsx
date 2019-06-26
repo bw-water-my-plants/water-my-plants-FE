@@ -192,9 +192,9 @@ const WaterMe = styled.button`
 `;
 export default function PlantCard(props) {
     return(
-        <Card closed>
-            <PlantProfile closed>
-                <PlantImage imgUrl={exampleImage} closed/>
+        <Card>
+            <PlantProfile>
+                <PlantImage imgUrl={exampleImage}/>
                 <MidContainer>
                     <PlantName>
                         <h2>Plant Name</h2>
@@ -207,7 +207,7 @@ export default function PlantCard(props) {
                     </MidContainer>
             </PlantProfile>
 
-            <InfoBox closed>
+            <InfoBox>
                 <LearnMore>Learn more...</LearnMore>
                 <InfoItem>
                     <HeightIcon svgHeight='30%'strokeWidth='0px' color={Colors.Tertiary}/>
