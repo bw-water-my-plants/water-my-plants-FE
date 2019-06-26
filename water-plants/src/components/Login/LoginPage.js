@@ -11,7 +11,7 @@ class LoginPage extends React.Component {
     const { login } = this.props;
     return (
         <div>
-            <WrappedNormalLoginForm login={login} />
+            <WrappedNormalLoginForm login={login} {...this.props} />
         </div>
     )
   }

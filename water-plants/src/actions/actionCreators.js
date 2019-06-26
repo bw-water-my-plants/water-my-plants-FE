@@ -2,7 +2,7 @@ import * as types from './actionTypes';
 import axiosWithAuth from '../axios/axiosWithAuth';
 import axios from 'axios';
 
-const baseURL = 'https://water-my-plants-api.herokuapp.com/api/';
+const baseURL = 'https://water-my-plants-api.herokuapp.com/api';
 
 const CreateAPIUrl = (extension) => {
     return `${baseURL}/${extension}`;    
@@ -64,7 +64,7 @@ export const login = (email, password) =>  dispatch => {
     return axios
         .post(CreateAPIUrl('auth/login'), { email, password })
         .then(res => {
-            localStorage.setItem('token', res.data);
+            localStorage.setItem('token', res.data.token);
             dispatch({ type: types.LOGIN_SUCCESS });
         })
         .catch(error => {
