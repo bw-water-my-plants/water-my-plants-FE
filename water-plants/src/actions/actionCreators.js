@@ -35,6 +35,18 @@ export const fetchPlants = () => dispatch => {
         });
 }
 
+export const addPlant = (data) => dispatch => {
+    return axiosWithAuth()
+        .post(CreateAPIUrl('plants'), data)
+        .then(res => {
+            dispatch({ type: types.POST_SUCCESS });
+            dispatch(fetchPlants());
+        })
+        .catch(error => {
+            dispatch(setError(error.message));
+        });
+}
+
 export const login = (email, password) =>  dispatch => {
     dispatch({ type: types.LOGGING_IN });
     return axios
