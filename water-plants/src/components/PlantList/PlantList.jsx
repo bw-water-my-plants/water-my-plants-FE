@@ -3,16 +3,22 @@ import { connect } from "react-redux"
 import { fetchPlants } from '../../actions/actionCreators';
 import PlantCard from './PlantCard';
 
-export function PlantList(props) {
-    return(
-        <ul>
-            {
-                props.plants.map(plant => {
-                    return <PlantCard plant={plant} />;
-                })
-            }
-        </ul>
-    )
+export class PlantList extends React.Component {
+    componentDidMount() {
+        this.props.fetchPlants();
+    }
+    render() {
+
+        return(
+            <ul>
+                {
+                    this.props.plants.map(plant => {
+                        return <PlantCard plant={plant} />;
+                    })
+                }
+            </ul>
+        )
+    }
 }
 
 function mapStateToProps(state) {
