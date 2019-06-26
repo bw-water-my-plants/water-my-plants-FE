@@ -23,6 +23,9 @@ const NavButton = styled.button`
     background: none;
     border: none;
 
+    &:focus{
+        outline: none;
+    }
     &.delete svg{
         transform: rotate(45deg);
     }

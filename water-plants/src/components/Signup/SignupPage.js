@@ -7,10 +7,10 @@ import PropTypes from 'prop-types';
 
 class SignupPage extends React.Component {
   render() {
-    const { userSignupRequest } = this.props;
+    const { register } = this.props;
     return (
         <div>
-            < WrappedRegistrationForm  userSignupRequest={userSignupRequest}  />
+            < WrappedRegistrationForm  userSignupRequest={register}  />
         </div>
     )
   }

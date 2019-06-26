@@ -76,7 +76,7 @@ export const login = (email, password) =>  dispatch => {
 
 export const register = ({ email, username, password, phone_number}) => dispatch => {
     return axios
-    .post(CreateAPIUrl('auth/register'), { email, password })
+    .post(CreateAPIUrl('auth/register'), { email, password, username, phone_number })
     .then(res => {
         dispatch({ type: types.POST_SUCCESS });
     })
