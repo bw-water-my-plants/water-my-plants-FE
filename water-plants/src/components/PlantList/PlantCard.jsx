@@ -70,7 +70,7 @@ export default function PlantCard(props) {
             </PlantProfile>
 
             <InfoBox>
-                <ClockIcon heigth='40' width='40'/>
+                <ClockIcon svgHeight='80%' svgWidth='80%'/>
             </InfoBox>
         </Card>
     )
