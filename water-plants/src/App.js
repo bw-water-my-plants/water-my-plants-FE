@@ -1,5 +1,5 @@
 import React from "react";
-import SignupPage from "./components/SignupPage";
+import SignupPage from "./components/Signup/SignupPage";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from 'redux-thunk';
