@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-export default function() {
-    return axios.create({
+export default function () {
+    const instance = axios.create({
         headers: {
-            Authorization: localStorage.getItem('token') || '',
+        Authorization: localStorage.getItem('token') ? localStorage.getItem('token') : '',
         },
     });
+    return instance;
 }

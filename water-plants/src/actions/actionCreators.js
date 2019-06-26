@@ -2,7 +2,7 @@ import * as types from './actionTypes';
 import axiosWithAuth from '../axios/axiosWithAuth';
 import axios from 'axios';
 
-const baseURL = 'https://water-my-plants-api.herokuapp.com/api/';
+const baseURL = 'https://water-my-plants-api.herokuapp.com/api';
 
 const CreateAPIUrl = (extension) => {
     return `${baseURL}/${extension}`;    
@@ -10,7 +10,7 @@ const CreateAPIUrl = (extension) => {
 
 export const setPlants = (plants) => {
     return {
-        types: types.SET_PLANTS,
+        type: types.SET_PLANTS,
         payload: plants,
     };
 }
@@ -23,14 +23,16 @@ export const setError = (err) => {
 }
 
 export const fetchPlants = () => dispatch => {
-    dispatch({ type: types.FETCHING_PLANTS });
+    dispatch({ type: types.FETCHING_PLANTS });  
     return axiosWithAuth()
         .get(CreateAPIUrl('plants'))
         .then(res => {
+            console.log('Success');
             dispatch(setPlants(res.data));
             dispatch({ type: types.FETCH_SUCCESS });
         })
         .catch(error => {
+            console.log('Error');
             dispatch(setError(error.message));
         });
 }
@@ -64,7 +66,7 @@ export const login = (email, password) =>  dispatch => {
     return axios
         .post(CreateAPIUrl('auth/login'), { email, password })
         .then(res => {
-            localStorage.setItem('token', res.data);
+            localStorage.setItem('token', res.data.token);
             dispatch({ type: types.LOGIN_SUCCESS });
         })
         .catch(error => {
