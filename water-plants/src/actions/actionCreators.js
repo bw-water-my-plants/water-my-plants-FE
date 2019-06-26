@@ -35,10 +35,10 @@ export const fetchPlants = () => dispatch => {
         });
 }
 
-export const login = () =>  dispatch => {
+export const login = (email, password) =>  dispatch => {
     dispatch({ type: types.LOGGING_IN });
     return axios
-        .post(CreateAPIUrl('auth/login'))
+        .post(CreateAPIUrl('auth/login'), { email, password })
         .then(res => {
             localStorage.setItem('token', res.data);
             dispatch({ type: types.LOGIN_SUCCESS });
@@ -46,4 +46,15 @@ export const login = () =>  dispatch => {
         .catch(error => {
             dispatch({ type: types.LOGIN_FAIL });
         });
+}
+
+export const register = ({ email, username, password, phone_number}) => dispatch => {
+    return axios
+    .post(CreateAPIUrl('auth/register'), { email, password })
+    .then(res => {
+        dispatch({ type: types.POST_SUCCESS });
+    })
+    .catch(error => {
+        dispatch(setError(error.message));
+    });
 }
