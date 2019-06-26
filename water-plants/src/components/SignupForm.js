@@ -1,49 +1,164 @@
-import React, { Component } from "react";
+import React from "react";
+import 'antd/dist/antd.css';
+import styled from "styled-components";
 
 
 
-class SignupForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        username: "",
-        phonenumber: "",
-        password: "",
-        email: ""
-    };
-  }
-  onChange = (e) => {
-      this.setState({ 
-          [e.target.name]: e.target.value 
-      })
 
-  }
+import {
+    Form,
+    Input,
+    Tooltip,
+    Icon,
+   
+    Button,
 
-  onSubmit = (e) => {
-      e.preventDefault()
-    this.props.userSignupRequest(this.state)
-     
-  }
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.onSubmit}>
-          <label htmlFor="username">Username</label>
-          <input type="text" name="username" value={this.state.username} onChange={this.onChange} />
-          <label htmlFor="phonenumber" >Tel</label>
-          <input type="tel" value={this.state.phonenumber} name="phonenumber" onChange={this.onChange} />
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" value={this.state.email} onChange={this.onChange}/>
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" value={this.state.password} onChange={this.onChange}/>
-         
-          <button type="submit">Sign Up</button>
-        </form>
-      </div>
-    );
-  }
-}
-
+  } from 'antd';
+  
  
+  const Overall = styled.div`
+    margin: 0 auto;
+    padding-top: 40px;
+    width: 500px;
+  `
+  
 
-export default SignupForm;
+  class RegistrationForm extends React.Component {
+    state = {
+      confirmDirty: false,
+      autoCompleteResult: [],
+    };
+  
+    handleSubmit = e => {
+      e.preventDefault();
+
+      this.props.form.validateFieldsAndScroll((err, values) => {
+        if (!err) {
+            this.props.userSignupRequest(values)
+            
+        }
+        
+        
+      });
+     
+    };
+  
+    handleConfirmBlur = e => {
+      const { value } = e.target;
+      this.setState({ confirmDirty: this.state.confirmDirty || !!value });
+    };
+  
+    compareToFirstPassword = (rule, value, callback) => {
+      const { form } = this.props;
+      if (value && value !== form.getFieldValue('password')) {
+        callback('Two passwords that you enter is inconsistent!');
+      } else {
+        callback();
+      }
+    };
+  
+    validateToNextPassword = (rule, value, callback) => {
+      const { form } = this.props;
+      if (value && this.state.confirmDirty) {
+        form.validateFields(['confirm'], { force: true });
+      }
+      callback();
+    };
+  
+  
+  
+    render() {
+      const { getFieldDecorator } = this.props.form;
+    
+  
+      const formItemLayout = {
+        labelCol: {
+          xs: { span: 24 },
+          sm: { span: 8 },
+        },
+        wrapperCol: {
+          xs: { span: 24 },
+          sm: { span: 16 },
+        },
+      };
+      const tailFormItemLayout = {
+        wrapperCol: {
+          xs: {
+            span: 24,
+            offset: 0,
+          },
+          sm: {
+            span: 16,
+            offset: 8,
+          },
+        },
+      };
+      
+      
+      return (
+        <Overall>
+        <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+          <Form.Item label="E-mail">
+            {getFieldDecorator('email', {
+              rules: [
+                {
+                  type: 'email',
+                  message: 'The input is not valid E-mail!',
+                },
+                {
+                  required: true,
+                  message: 'Please input your E-mail!',
+                },
+              ],
+            })(<Input />)}
+          </Form.Item>
+          <Form.Item label="Password" hasFeedback>
+            {getFieldDecorator('password', {
+              rules: [
+                {
+                  required: true,
+                  message: 'Please input your password!',
+                },
+                {
+                  validator: this.validateToNextPassword,
+                },
+              ],
+            })(<Input.Password />)}
+          </Form.Item>
+          
+          <Form.Item
+            label={
+              <span>
+                Username&nbsp;
+                <Tooltip title="What do you want others to call you?">
+                  <Icon type="question-circle-o" />
+                </Tooltip>
+              </span>
+            }
+          >
+            {getFieldDecorator('username', {
+              rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+            })(<Input />)}
+          </Form.Item>
+          
+          <Form.Item label="Phone_number">
+            {getFieldDecorator('phone_number', {
+              rules: [{ required: true, message: 'Please input your phone number!' }],
+            })(<Input  style={{ width: '100%' }} />)}
+          </Form.Item>
+          
+          
+         
+          <Form.Item {...tailFormItemLayout}>
+            <Button type="primary" htmlType="submit">
+              Register
+            </Button>
+          </Form.Item>
+        </Form>
+
+        </Overall>
+      );
+    }
+  }
+  
+  export const WrappedRegistrationForm = Form.create({ name: 'register' })(RegistrationForm);

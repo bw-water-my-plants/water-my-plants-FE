@@ -1,13 +1,20 @@
 import React from "react";
-import SignupForm from "./SignupForm";
+import {  WrappedRegistrationForm }  from "./SignupForm";
 import { connect } from "react-redux"
 import { userSignupRequest } from "./Actions/SignupActions"
+
 import PropTypes from 'prop-types';
 
 class SignupPage extends React.Component {
   render() {
     const { userSignupRequest } = this.props;
-    return <SignupForm userSignupRequest={userSignupRequest} />;
+    return (
+        <div>
+      
+            < WrappedRegistrationForm  userSignupRequest={userSignupRequest}  />
+
+        </div>
+    )
   }
 }
 SignupPage.propTypes = {
