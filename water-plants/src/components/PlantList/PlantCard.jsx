@@ -52,7 +52,13 @@ const PlantProfile = styled.div`
         }
     }}
 `;
-
+const LearnMore = styled.button`
+    background: none;
+    border: none;
+    color: ${Colors.Tertiary};
+    font-size: 1.4em;
+    width: 100%;
+`;
 const InfoBox = styled.div`
     width: 22%;
     display: flex;
@@ -79,12 +85,12 @@ const InfoBox = styled.div`
                 > div{
                     &::after {
                         content: '';
-                        height:85%;
+                        height:70%;
                         width:1px;
                         border-right: 1px solid black;
                         opacity: 0.1;
                         position: absolute;
-                        margin-right: 100%;
+                        right: 0;
                     }
                 }
 
@@ -104,6 +110,7 @@ const InfoItem = styled.div`
     align-items: center;
     justify-content: space-evenly;
     height: 100%;
+    width: 100%;
     
     span{
         font-size: 1.2em;
@@ -156,16 +163,17 @@ export default function PlantCard(props) {
             </PlantProfile>
 
             <InfoBox>
+                <LearnMore>Learn more...</LearnMore>
                 <InfoItem>
-                    <HeightIcon svgHeight='60%' svgWidth='60%' strokeWidth='0px'/>
+                    <HeightIcon svgHeight='50%' svgWidth='60%' strokeWidth='0px' color={Colors.Tertiary}/>
                     <span>12 cm</span>
                 </InfoItem>
                 <InfoItem>
-                    <CupIcon svgHeight='60%' svgWidth='60%' strokeWidth='12px'/>
+                    <CupIcon svgHeight='60%' svgWidth='60%' strokeWidth='12px' color={Colors.Tertiary}/>
                     <span>60%</span>
                 </InfoItem>
                 <InfoItem>
-                    <ClockIcon svgHeight='60%' svgWidth='60%' strokeWidth='12px'/>
+                    <ClockIcon svgHeight='60%' svgWidth='60%' strokeWidth='12px' color={Colors.Tertiary}/>
                     <span>5 days</span>
                 </InfoItem>
             </InfoBox>
