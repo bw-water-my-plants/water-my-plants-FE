@@ -1,11 +1,6 @@
 import { combineReducers } from 'redux';
 import * as types from '../actions/actionTypes';
 
-export default combineReducers({
-    plants: plantsReducer,
-    api: apiReducer,
-});
-
 const plantState = {
     plants: null,
 }
@@ -18,6 +13,13 @@ const apiState = {
     error: null,
     loggedIn: false,
 }
+
+
+export default combineReducers({
+    plants: plantsReducer,
+    api: apiReducer,
+});
+
 
 export function plantsReducer(state = plantState, action) {
     switch(action.type) {
