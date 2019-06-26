@@ -27,12 +27,10 @@ export const fetchPlants = () => dispatch => {
     return axiosWithAuth()
         .get(CreateAPIUrl('plants'))
         .then(res => {
-            console.log('Success');
             dispatch(setPlants(res.data));
             dispatch({ type: types.FETCH_SUCCESS });
         })
         .catch(error => {
-            console.log('Error');
             dispatch(setError(error.message));
         });
 }
