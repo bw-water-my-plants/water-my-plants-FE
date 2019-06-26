@@ -17,7 +17,8 @@ const Card = styled.li`
     ${props => {
         if(!props.closed) {
             return(`
-                height: 80vw;
+                height: 70vw;
+                flex-direction: column;
             `)
         }
     }}
@@ -28,13 +29,28 @@ const PlantProfile = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    &::after {
-        content: '';
-        height:85%;
-        width:1px;
-        border-right: 1px solid black;
-        opacity: 0.1;
-    }
+
+    ${props => {
+        if(!props.closed) {
+            return(`
+                height: 75%;
+                width: 100%;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: flex-start;
+            `)
+        } else {
+            return (`
+                &::after {
+                    content: '';
+                    height:85%;
+                    width:1px;
+                    border-right: 1px solid black;
+                    opacity: 0.1;
+                }
+            `)
+        }
+    }}
 `;
 
 const InfoBox = styled.div`
@@ -53,6 +69,29 @@ const InfoBox = styled.div`
 
                 div:last-child{
                     display: flex;
+                }
+            `)
+        } else {
+            return(`
+                height: 25%;
+                width: 100%;
+                position: relative;
+                > div{
+                    &::after {
+                        content: '';
+                        height:85%;
+                        width:1px;
+                        border-right: 1px solid black;
+                        opacity: 0.1;
+                        position: absolute;
+                        margin-right: 100%;
+                    }
+                }
+
+                div:last-child{
+                    &::after {
+                        display: none;
+                    }
                 }
             `)
         }
@@ -96,6 +135,14 @@ const PlantImage = styled.div`
     background-color: transparent;
     width: 20vw;
     height: 20vw;
+    ${props => {
+        if(!props.closed) {
+            return(`
+                height: 75%;
+                width: 100%;
+            `)
+        }
+    }}
 `;
 export default function PlantCard(props) {
     return(
@@ -108,7 +155,7 @@ export default function PlantCard(props) {
                 </PlantName>
             </PlantProfile>
 
-            <InfoBox closed>
+            <InfoBox>
                 <InfoItem>
                     <HeightIcon svgHeight='60%' svgWidth='60%' strokeWidth='0px'/>
                     <span>12 cm</span>
