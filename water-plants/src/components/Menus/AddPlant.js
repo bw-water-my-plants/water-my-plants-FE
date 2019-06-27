@@ -89,6 +89,14 @@ const FrequencyPicker = styled.div`
     }
 `;
 
+const PicturePicker = styled.div`
+    height: 40%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
 export function AddPlant(props) {
 
     return (

@@ -54,3 +54,18 @@ export function MinusIcon(props) {
     </PathSVG>
   );
 }
+
+export function TriangleArrow(props) {
+  return (
+      <ShapeSVG
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 42 48"
+      {...props}
+    >
+      <g>
+      <path className="paths"
+             d="M4 19.8872L37.8713 0.066298L37.8713 39.708L4 19.8872Z" />
+      </g>
+    </ShapeSVG>
+  )
+}
