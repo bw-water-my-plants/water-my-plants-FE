@@ -130,6 +130,19 @@ export function AddPlant(props) {
     const typeRef = React.createRef();
     const heightRef = React.createRef();
 
+    const addPlant = () => {
+        const plant = {
+            name: nameRef.current.value,
+            img_id: props.picture,
+            height: parseInt(heightRef.current.value) || 0,
+            plant_type: typeRef.current.value,
+            watering_frequency: props.freq,
+            last_watered_at: (new Date()).toISOString(),
+        }
+
+        props.addPlant(plant);
+    }
+
     return (
       <Container>
         <PlantForm>
@@ -146,7 +159,7 @@ export function AddPlant(props) {
         </PlantForm>
 
         <FrequencyPicker>
-          <h2>I would like to water</h2>
+          <h2>I would like to water every</h2>
           <div>
             <button onClick={props.minusDay}>
               <MinusIcon
@@ -166,7 +179,7 @@ export function AddPlant(props) {
               />
             </button>
           </div>
-          <h2>days a week</h2>
+          <h2>days</h2>
         </FrequencyPicker>
 
         <PicturePicker>
@@ -183,7 +196,7 @@ export function AddPlant(props) {
           />
         </PicturePicker>
 
-        <AddButton>Add</AddButton>
+        <AddButton onClick={addPlant}>Add</AddButton>
       </Container>
     );
 }
