@@ -196,9 +196,9 @@ export default function PlantCard(props) {
         props.expandPlant(props.plant.plant_id);
     }
     return(
-        <Card closed={!props.open} onClick={expand}>
+        <Card closed={!props.open}>
             <PlantProfile closed={!props.open}>
-                <PlantImage imgUrl={exampleImage} closed={!props.open}/>
+                <PlantImage imgUrl={exampleImage} closed={!props.open} onClick={expand}/>
                 <MidContainer>
                     <PlantName>
                         <h2>{props.plant.name}</h2>

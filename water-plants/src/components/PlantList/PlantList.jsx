@@ -34,7 +34,7 @@ export class PlantList extends React.Component {
             <StyledList>
                 {
                     this.props.plants.map(plant => {
-                        return <PlantCard plant={plant} open={plant.plant_id === this.state.openPlant ? true : false} expandPlant={this.openPlant}/>;
+                        return <PlantCard key={plant.plant_id} plant={plant} open={plant.plant_id === this.state.openPlant ? true : false} expandPlant={this.openPlant}/>;
                     })
                 }
             </StyledList>
