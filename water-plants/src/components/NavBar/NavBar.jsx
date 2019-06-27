@@ -20,8 +20,8 @@ class NavBar extends React.Component {
         </Link>
         <Link to="/profile">Profile</Link>
         <Link to="/signout">Sign out</Link>
-       
-        <a href="javascript:void(0);" className="icon" onclick={this.toggle}>
+        <Link to="#about">About</Link>
+        <a href="javascript:void(0);" className="icon" onClick={() => this.toggle()}>
           <i className="fa fa-bars" />
         </a>
       </div>
