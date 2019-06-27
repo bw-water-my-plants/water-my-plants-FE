@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Colors from '../../styling/colors';
 import { XIcon, MinusIcon, TriangleArrow } from '../Vectors/Elements';
-import exampleImage from '../../assets/images/example_plant.jfif';
+import images from '../Images';
 import { addDay, minusDay, nextPicture, prevPicture, updatePlant, addPlant, toggleForm, setCurrentPlant } from '../../actions/actionCreators';
 import { connect } from 'react-redux';
 
@@ -109,7 +109,6 @@ const PicturePicker = styled.div`
 
     img{
         height: 80%;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
     svg{
         filter: drop-shadow( 0px 4px 2px rgba(0, 0, 0, 0.25));
@@ -223,7 +222,7 @@ export class AddPlant extends React.Component {
               svgWidth="12%"
               onClick={this.props.prevPicture}
               />
-              <img src={exampleImage} alt="plant" />
+              <img src={images[this.props.picture]} alt="plant" />
               <TriangleArrow
               color={Colors.Primary}
               svgWidth="12%"
