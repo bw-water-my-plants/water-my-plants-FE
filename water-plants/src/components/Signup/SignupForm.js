@@ -1,6 +1,7 @@
 import React from "react";
 import 'antd/dist/antd.css';
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 
 
@@ -10,6 +11,7 @@ import {
     Input,
     Tooltip,
     Icon,
+    InputNumber,
    
     Button,
 
@@ -18,8 +20,11 @@ import {
  
   const Overall = styled.div`
     margin: 0 auto;
-    padding-top: 40px;
+    padding-top: 200px;
     width: 500px;
+    @media (max-width: 600px){
+      width:300px;
+    }
   `
   
 
@@ -34,8 +39,9 @@ import {
 
       this.props.form.validateFieldsAndScroll((err, values) => {
         if (!err) {
-            debugger;
+        
             this.props.userSignupRequest(values)
+            this.props.form.resetFields()
             
         }
         
@@ -142,18 +148,19 @@ import {
             })(<Input />)}
           </Form.Item>
           
-          <Form.Item label="Phone_number">
+          <Form.Item label="Phone number">
             {getFieldDecorator('phone_number', {
               rules: [{ required: true, message: 'Please input your phone number!' }],
-            })(<Input  style={{ width: '100%' }} />)}
+            })(<InputNumber min={1} max={10000000000} defaultValue={3} style={{ width: '100%' }} />)}
           </Form.Item>
           
           
          
           <Form.Item {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" >
               Register
             </Button>
+            Or <Link to="/login">Login</Link>
           </Form.Item>
         </Form>
 
