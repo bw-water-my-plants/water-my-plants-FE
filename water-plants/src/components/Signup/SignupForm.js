@@ -11,7 +11,7 @@ import {
     Input,
     Tooltip,
     Icon,
-    InputNumber,
+    
    
     Button,
 
@@ -151,7 +151,7 @@ import {
           <Form.Item label="Phone number">
             {getFieldDecorator('phone_number', {
               rules: [{ required: true, message: 'Please input your phone number!' }],
-            })(<InputNumber min={1} max={10000000000} style={{ width: '100%' }} />)}
+            })(<Input style={{ width: '100%' }} />)}
           </Form.Item>
           
           
