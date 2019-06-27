@@ -4,6 +4,7 @@ import Colors from '../../styling/colors';
 import { XIcon } from '../Vectors/Elements';
 import { CupIcon } from '../Vectors/InfoIcons';
 import { connect } from 'react-redux';
+import { toggleForm } from '../../actions/actionCreators';
 
 const Bar = styled.nav`
     height: 4.5rem;
@@ -30,21 +31,29 @@ const NavButton = styled.button`
         transform: rotate(45deg);
     }
 `;
-export default class BottomNav extends React.Component {
+export class BottomNav extends React.Component {
 
     render() {
         return (
             <Bar>
-                <NavButton>
+                <NavButton onClick={this.props.toggleForm}>
                     <XIcon color='white' svgHeight='70%' svgWidth='3rem' strokeWidth='1px'/>
                 </NavButton>
                 <NavButton>
                     <CupIcon color='white' svgHeight='70%' svgWidth='2.2rem' strokeWidth='12px'/>
                 </NavButton>
-                <NavButton className='delete'>
-                    <XIcon color='white' svgHeight='70%' svgWidth='3rem' strokeWidth='1px'/>
-                </NavButton>
             </Bar>
         );
     }
 }
+
+
+function mapStateToProps(state) {
+    return {};
+  }
+export default connect(
+    mapStateToProps,
+    {
+        toggleForm,
+    }
+)(BottomNav);

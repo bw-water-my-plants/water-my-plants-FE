@@ -15,7 +15,8 @@ const Card = styled.li`
     justify-content: space-between;
     padding: 0;
     margin: 0 auto;
-
+    transition: all 0.3s;
+    transition-timing-function: ease-in-out;
     ${props => {
         if(!props.closed) {
             return(`
@@ -31,7 +32,8 @@ const PlantProfile = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    transition: all 0.3s;
+    transition-timing-function: ease-in-out;
     ${props => {
         if(!props.closed) {
             return(`
@@ -57,7 +59,7 @@ const PlantProfile = styled.div`
         }
     }}
 `;
-const LearnMore = styled.button`
+const ActionButton = styled.button`
     background: none;
     border: none;
     color: ${Colors.Tertiary};
@@ -70,7 +72,6 @@ const InfoBox = styled.div`
     align-items: center;
     justify-content: center;
     height: 100%;
-
     ${props => {
         if(props.closed) {
             return(`
@@ -167,7 +168,7 @@ const MidContainer = styled.div`
 `;
 const WaterMe = styled.button`
     background: none;
-    background-color: white;
+    background-color: #0097E2;
     padding: 0.8rem 6.4rem;
     color: ${Colors.Light};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -191,35 +192,66 @@ const WaterMe = styled.button`
     }
 `;
 export default function PlantCard(props) {
+    const expand = () => {
+        props.expandPlant(props.plant.plant_id);
+    }
+
+    const edit = (e) => {
+        e.stopPropagation();
+        props.editPlant(props.plant);
+        props.showForm();
+    }
+    const water = (e) => {
+        e.stopPropagation();
+        props.waterPlant(props.plant.plant_id);
+    }
+    const deletePlant = (e) => {
+        e.stopPropagation();
+        props.deletePlant(props.plant.plant_id);
+    }
+
+    const calculateDays = () => {
+        const now = (new Date()).getTime();
+        const wateringDate = Date.parse(props.plant.next_watering_at);
+        const delta = wateringDate - now;
+        const days = Math.floor(delta / (1000 * 60 * 60 * 24))
+        return days;
+    }
+
+    const calculatePercentage = () => {
+        return Math.floor((calculateDays() / props.plant.watering_frequency) * 100);
+    }
     return(
-        <Card>
-            <PlantProfile>
-                <PlantImage imgUrl={exampleImage}/>
+        <Card closed={!props.open}>
+            <PlantProfile closed={!props.open}>
+                <PlantImage imgUrl={exampleImage} closed={!props.open} onClick={expand}/>
                 <MidContainer>
                     <PlantName>
-                        <h2>Plant Name</h2>
-                        <h3>Species Name</h3>
+                        <h2>{props.plant.name}</h2>
+                        <h3>{props.plant.plant_type}</h3>
                     </PlantName>
-                    <WaterMe>
-                        <WaterOverlay svgHeight='90%' svgWidth='100%'/>
+                    <WaterMe onClick={water}>
                         <span>Water Me</span>
                     </WaterMe>
                     </MidContainer>
             </PlantProfile>
 
-            <InfoBox>
-                <LearnMore>Learn more...</LearnMore>
+            <InfoBox closed={!props.open}>
+                <InfoItem>
+                    <ActionButton onClick={edit}>Edit...</ActionButton>
+                    <ActionButton onClick={deletePlant}>Delete...</ActionButton>
+                </InfoItem>
                 <InfoItem>
                     <HeightIcon svgHeight='30%'strokeWidth='0px' color={Colors.Tertiary}/>
-                    <span>12 cm</span>
+                    <span>{props.plant.height} cm</span>
                 </InfoItem>
                 <InfoItem>
                     <CupIcon svgHeight='40%' strokeWidth='18px' color={Colors.Tertiary}/>
-                    <span>60%</span>
+                    <span>{calculatePercentage()}%</span>
                 </InfoItem>
                 <InfoItem>
                     <ClockIcon svgHeight='40%' strokeWidth='18px' color={Colors.Tertiary}/>
-                    <span>5 days</span>
+                    <span>{calculateDays()} days</span>
                 </InfoItem>
             </InfoBox>
         </Card>

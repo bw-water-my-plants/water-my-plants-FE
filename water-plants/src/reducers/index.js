@@ -15,12 +15,24 @@ const apiState = {
     loggingIn: false,
     loginFail: null,
     error: null,
-    loggedIn: false
-};
+    loggedIn: false,
+}
+
+const formState = {
+    freq: 2,
+    picture: 1,
+    currentPlant: null,
+}
+
+const menuState = {
+    formShow: false,
+}
 
 export default combineReducers({
     plants: plantsReducer,
     api: apiReducer,
+    form: formReducer,
+    menus:menuReducer,
     profile: profileReducer
 });
 
@@ -28,6 +40,35 @@ export function plantsReducer(state = plantState, action) {
     switch (action.type) {
         case types.SET_PLANTS:
             return { ...state, plants: action.payload };
+        default:
+            return state;
+    }
+}
+export function formReducer(state = formState, action) {
+    switch(action.type) {
+        case(types.PLANT_ADD_DAY):
+            return { ...state, freq: state.freq + 1};
+        case(types.PLANT_MINUS_DAY):
+            return { ...state, freq: state.freq - 1};
+        case(types.PLANT_NEXT_PICTURE):
+            return { ...state, picture: state.picture + 1};
+        case(types.PLANT_PREV_PICTURE):
+            return { ...state, picture: state.picture - 1};
+        case(types.PLANT_SET_PLANT):
+            if(action.payload !== null){
+                return { ...state, currentPlant: action.payload, freq: parseInt(action.payload.watering_frequency), picture: parseInt(action.payload.img_id)};
+            } else {
+                return { ...state, currentPlant: null };
+            }
+        default:
+            return state;
+    }
+}
+
+export function menuReducer(state = menuState, action) {
+    switch(action.type) {
+        case(types.MENU_FORM_TOGGLE):
+            return { ...state, formShow: !state.formShow };
         default:
             return state;
     }

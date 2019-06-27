@@ -42,6 +42,18 @@ export const fetchPlants = () => dispatch => {
         });
 };
 
+export const deletePlant = (id) => dispatch => {
+    return axiosWithAuth()
+        .delete(CreateAPIUrl(`plants/${id}`))
+        .then(res => {
+            dispatch({ type: types.POST_SUCCESS });
+            dispatch(fetchPlants());
+        })
+        .catch(error => {
+            dispatch(setError(error.message));
+        });
+}
+
 export const addPlant = data => dispatch => {
     return axiosWithAuth()
         .post(CreateAPIUrl('plants'), data)
@@ -81,14 +93,58 @@ export const login = (email, password) => dispatch => {
 
 export const register = ({ email, username, password, phone_number }) => dispatch => {
     return axios
-        .post(CreateAPIUrl('auth/register'), { email, password, username, phone_number })
-        .then(res => {
-            dispatch({ type: types.POST_SUCCESS });
-        })
-        .catch(error => {
-            dispatch(setError(error.message));
-        });
-};
+    .post(CreateAPIUrl('auth/register'), { email, password, username, phone_number })
+    .then(res => {
+        dispatch({ type: types.POST_SUCCESS });
+    })
+    .catch(error => {
+        dispatch(setError(error.message));
+    });
+}
+
+
+export const addDay = () => {
+    return {
+        type: types.PLANT_ADD_DAY,
+    }
+}
+
+export const minusDay = () => {
+    return {
+        type: types.PLANT_MINUS_DAY,
+    }
+}
+
+export const nextPicture = () => {
+    return {
+        type: types.PLANT_NEXT_PICTURE,
+    }
+}
+
+export const prevPicture = () => {
+    return {
+        type: types.PLANT_PREV_PICTURE,
+    }
+}
+
+export const setCurrentPlant = (plant) => {
+    return {
+        type: types.PLANT_SET_PLANT,
+        payload: plant,
+    }
+}
+
+export const toggleForm = () => {
+    return {
+        type: types.MENU_FORM_TOGGLE,
+    }
+}
+
+export const waterPlant = (id) => dispatch => {
+    dispatch(updatePlant(id, {
+        last_watered_at: (new Date()).toISOString(),
+    }))
+}
 
 export const fetchProfile = () => dispatch => {
     dispatch({ type: types.FETCHING_PLANTS });
