@@ -195,6 +195,12 @@ export default function PlantCard(props) {
     const expand = () => {
         props.expandPlant(props.plant.plant_id);
     }
+
+    const edit = (e) => {
+        e.stopPropagation();
+        props.editPlant(props.plant);
+        props.showForm();
+    }
     return(
         <Card closed={!props.open}>
             <PlantProfile closed={!props.open}>
@@ -212,7 +218,7 @@ export default function PlantCard(props) {
             </PlantProfile>
 
             <InfoBox closed={!props.open}>
-                <Edit>Edit...</Edit>
+                <Edit onClick={edit}>Edit...</Edit>
                 <InfoItem>
                     <HeightIcon svgHeight='30%'strokeWidth='0px' color={Colors.Tertiary}/>
                     <span>{props.plant.height} cm</span>
