@@ -209,6 +209,12 @@ export default function PlantCard(props) {
         e.stopPropagation();
         props.deletePlant(props.plant.plant_id);
     }
+
+    const calculateDays = () => {
+        const now = (new Date()).getTime();
+        const wateringDate = Date.parse(props.plant.next_watering_at);
+        return Math.floor( wateringDate - now / (1000 * 60 * 60 * 24));
+    }
     return(
         <Card closed={!props.open}>
             <PlantProfile closed={!props.open}>
@@ -239,7 +245,7 @@ export default function PlantCard(props) {
                 </InfoItem>
                 <InfoItem>
                     <ClockIcon svgHeight='40%' strokeWidth='18px' color={Colors.Tertiary}/>
-                    <span>5 days</span>
+                    <span>{calculateDays()} days</span>
                 </InfoItem>
             </InfoBox>
         </Card>
