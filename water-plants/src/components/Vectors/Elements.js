@@ -40,3 +40,17 @@ export function XIcon(props) {
     </PathSVG>
   );
 }
+
+export function MinusIcon(props) {
+  return (
+    <PathSVG
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 2"
+      {...props}
+    >
+      <g>
+        <line x1="0.433716" y1="0.674679" x2="31.759" y2="0.674679"/>
+      </g>
+    </PathSVG>
+  );
+}
