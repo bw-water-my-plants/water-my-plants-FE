@@ -34,6 +34,7 @@ import {
 
       this.props.form.validateFieldsAndScroll((err, values) => {
         if (!err) {
+            debugger;
             this.props.userSignupRequest(values)
             
         }

@@ -1,7 +1,14 @@
 import React from "react";
 import { connect } from "react-redux"
 import { fetchPlants } from '../../actions/actionCreators';
+import styled from 'styled-components';
 import PlantCard from './PlantCard';
+
+const StyledList = styled.ul`
+    li{
+        margin-bottom: 2rem;
+    }
+`
 
 export class PlantList extends React.Component {
     componentDidMount() {
@@ -9,13 +16,13 @@ export class PlantList extends React.Component {
     }
     render() {
         return(
-            <ul>
+            <StyledList>
                 {
                     this.props.plants.map(plant => {
                         return <PlantCard plant={plant} />;
                     })
                 }
-            </ul>
+            </StyledList>
         )
     }
 }
