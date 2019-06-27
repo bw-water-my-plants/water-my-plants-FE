@@ -8,7 +8,7 @@ export default class ProfileTop extends React.Component {
         return (
             <SDProfileBlock>
                 <SDImageDiv>
-                    <img src={profileImg} />
+                    <img src={profileImg} alt="profile" />
                 </SDImageDiv>
                 <SDName>{this.props.username}</SDName>
             </SDProfileBlock>
@@ -34,8 +34,10 @@ const SDImageDiv = styled.div`
     height: 100px;
     border-radius: 50%;
     background-color: white;
+    padding: 0;
     img {
         width: 100%;
+        padding: 0;
     }
 `;
 
