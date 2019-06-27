@@ -114,52 +114,77 @@ const PicturePicker = styled.div`
 
 `;
 
+const AddButton = styled.button`
+    padding: 1rem 4rem;
+    background: none;
+    border: none;
+    background-color: ${Colors.Primary};
+    color: ${Colors.Light};
+    font-size: 1.8rem;
+    font-weight: 300;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+`;
+
 export function AddPlant(props) {
+    const nameRef = React.createRef();
+    const typeRef = React.createRef();
+    const heightRef = React.createRef();
 
     return (
-        <Container>
-            <PlantForm>
-                <h2>Name</h2>
-                <input
-                    type='text'
-                    name='name'
-                />
-                <h2>Type</h2>
-                <input
-                    type='text'
-                    name='type'
-                />
-                <h2>Height</h2>
-                <span className="height-input">
-                    <input
-                        type='number'
-                        name='height'
-                    />
+      <Container>
+        <PlantForm>
+          <h2>Name</h2>
+          <input ref={nameRef} type="text" name="name" />
+          <h2>Type</h2>
+          <input ref={typeRef} type="text" name="type" />
+          <h2>Height</h2>
+          <span className="height-input">
+            <input ref={heightRef} type="number" name="height" />
 
-                    <span>cm</span>
-                </span>
-            </PlantForm>
+            <span>cm</span>
+          </span>
+        </PlantForm>
 
-            <FrequencyPicker>
-                <h2>I would like to water</h2>
-                <div>
-                    <button>
-                        <MinusIcon color='white' svgHeight='80%' svgWidth='80%' strokeWidth='1px'/>
-                    </button>
-                    <span>2</span>
-                    <button>
-                        <XIcon color='white' svgHeight='80%' svgWidth='80%' strokeWidth='1px'/>
-                    </button>
-                </div>
-                <h2>days a week</h2>
-            </FrequencyPicker>
+        <FrequencyPicker>
+          <h2>I would like to water</h2>
+          <div>
+            <button onClick={props.minusDay}>
+              <MinusIcon
+                color="white"
+                svgHeight="80%"
+                svgWidth="80%"
+                strokeWidth="1px"
+              />
+            </button>
+            <span>{props.freq}</span>
+            <button onClick={props.addDay}>
+              <XIcon
+                color="white"
+                svgHeight="80%"
+                svgWidth="80%"
+                strokeWidth="1px"
+              />
+            </button>
+          </div>
+          <h2>days a week</h2>
+        </FrequencyPicker>
 
-            <PicturePicker>
-                <TriangleArrow color={Colors.Primary} svgWidth='12%'/>
-                <img src={exampleImage} alt="plant"/>
-                <TriangleArrow color={Colors.Primary} svgWidth='12%'/>
-            </PicturePicker>
-        </Container>
+        <PicturePicker>
+          <TriangleArrow
+          color={Colors.Primary}
+          svgWidth="12%"
+          onClick={props.prevPicture}
+          />
+          <img src={exampleImage} alt="plant" />
+          <TriangleArrow
+          color={Colors.Primary}
+          svgWidth="12%"
+          onClick={props.nextPicture}
+          />
+        </PicturePicker>
+
+        <AddButton>Add</AddButton>
+      </Container>
     );
 }
 
