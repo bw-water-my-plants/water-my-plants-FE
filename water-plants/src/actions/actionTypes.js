@@ -1,4 +1,5 @@
 export const SET_PLANTS = 'SET_PLANTS';
+export const SET_PROFILE = 'SET_PROFILE';
 export const FETCHING_PLANTS = 'FETCHING_PLANTS';
 export const LOGGING_IN = 'LOGGIN_IN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

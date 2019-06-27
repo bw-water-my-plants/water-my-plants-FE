@@ -8,6 +8,7 @@ import "./App.css";
 import './styling/reset.css';
 import MainView from './views/MainView';
 import  NavBar  from "./components/NavBar/NavBar";
+import ProfilePageView from './views/ProfilePageView';
 
 import combinedReducers from './reducers';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
@@ -44,6 +45,7 @@ function App() {
         <Route path='/signup' component={SignupPage} />
         <Route path='/login' component={LoginPage} />
         <PrivateRoute exact path='/' component={MainView} />
+        <PrivateRoute path='/profile' component={ProfilePageView} />
       </Router>
     </Provider>
   );
