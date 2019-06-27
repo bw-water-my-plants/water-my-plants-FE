@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Colors from '../../styling/colors';
 import { XIcon, MinusIcon, TriangleArrow } from '../Vectors/Elements';
@@ -133,9 +133,21 @@ const AddButton = styled.button`
 `;
 
 export function AddPlant(props) {
+
+    const [plant, setPlant] = useState(null)
+
+    
     const nameRef = React.createRef();
     const typeRef = React.createRef();
     const heightRef = React.createRef();
+    if (props.currentPlant){
+        if ( plant !== props.currentPlant.plant_id) {
+            setPlant(props.currentPlant.plant_id);
+            nameRef.current.value = props.currentPlant.name;
+            typeRef.current.value = props.currentPlant.plant_type;
+            heightRef.current.value = props.currentPlant.height;
+        }
+    }
 
     const addPlant = () => {
         const plant = {
