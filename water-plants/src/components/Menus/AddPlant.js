@@ -19,6 +19,13 @@ const Container = styled.div`
     position: fixed;
     bottom: 4.5rem;
     padding-top: 9rem;
+    transform: translateY(110%);
+    transition: all 0.5s;
+    transition-timing-function: ease-in-out;
+
+    .show{
+        transform: translateY(0%);
+    }
 `;
 
 const PlantForm = styled.form`

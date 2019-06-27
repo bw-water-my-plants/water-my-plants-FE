@@ -21,11 +21,16 @@ const formState = {
     currentPlant: null,
 }
 
+const menuState = {
+    formShow: false,
+}
+
 
 export default combineReducers({
     plants: plantsReducer,
     api: apiReducer,
     form: formReducer,
+    menus:menuReducer,
 });
 
 
@@ -49,6 +54,15 @@ export function formReducer(state = formState, action) {
             return { ...state, picture: state.picture - 1};
         case(types.PLANT_SET_PLANT):
             return { ...state, currentPlant: action.payload};
+        default:
+            return state;
+    }
+}
+
+export function menuReducer(state = menuState, action) {
+    switch(action.type) {
+        case(types.MENU_FORM_TOGGLE):
+            return { ...state, formShow: !state.formShow };
         default:
             return state;
     }

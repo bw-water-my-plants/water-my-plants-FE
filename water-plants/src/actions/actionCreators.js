@@ -114,3 +114,9 @@ export const setCurrentPlant = (plant) => {
         payload: plant,
     }
 }
+
+export const toggleForm = () => {
+    return {
+        type: types.MENU_FORM_TOGGLE,
+    }
+}
