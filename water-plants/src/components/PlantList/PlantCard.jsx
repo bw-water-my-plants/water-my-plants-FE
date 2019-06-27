@@ -59,7 +59,7 @@ const PlantProfile = styled.div`
         }
     }}
 `;
-const Edit = styled.button`
+const ActionButton = styled.button`
     background: none;
     border: none;
     color: ${Colors.Tertiary};
@@ -226,8 +226,8 @@ export default function PlantCard(props) {
 
             <InfoBox closed={!props.open}>
                 <InfoItem>
-                    <Edit onClick={edit}>Edit...</Edit>
-                    <Edit onClick={deletePlant}>Delete...</Edit>
+                    <ActionButton onClick={edit}>Edit...</ActionButton>
+                    <ActionButton onClick={deletePlant}>Delete...</ActionButton>
                 </InfoItem>
                 <InfoItem>
                     <HeightIcon svgHeight='30%'strokeWidth='0px' color={Colors.Tertiary}/>

@@ -42,9 +42,6 @@ export class BottomNav extends React.Component {
                 <NavButton>
                     <CupIcon color='white' svgHeight='70%' svgWidth='2.2rem' strokeWidth='12px'/>
                 </NavButton>
-                <NavButton className='delete'>
-                    <XIcon color='white' svgHeight='70%' svgWidth='3rem' strokeWidth='1px'/>
-                </NavButton>
             </Bar>
         );
     }
