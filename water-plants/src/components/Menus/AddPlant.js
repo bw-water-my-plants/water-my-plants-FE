@@ -132,95 +132,96 @@ const AddButton = styled.button`
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
-export function AddPlant(props) {
-
-    const [plant, setPlant] = useState(null)
-
+export class AddPlant extends React.Component {
     
-    const nameRef = React.createRef();
-    const typeRef = React.createRef();
-    const heightRef = React.createRef();
-    if (props.currentPlant){
-        if ( plant !== props.currentPlant.plant_id) {
-            setPlant(props.currentPlant.plant_id);
-            nameRef.current.value = props.currentPlant.name;
-            typeRef.current.value = props.currentPlant.plant_type;
-            heightRef.current.value = props.currentPlant.height;
+    nameRef = React.createRef();
+    typeRef = React.createRef();
+    heightRef = React.createRef();
+
+    componentDidUpdate(prevProps) {
+        if (this.props.currentPlant){
+            if ( prevProps.currentPlant !== this.props.currentPlant) {
+                this.nameRef.current.value = this.props.currentPlant.name;
+                this.typeRef.current.value = this.props.currentPlant.plant_type;
+                this.heightRef.current.value = this.props.currentPlant.height;
+            }
         }
     }
 
-    const addPlant = () => {
+    addPlant = () => {
         const plant = {
-            name: nameRef.current.value,
-            img_id: props.picture,
-            height: parseInt(heightRef.current.value) || 0,
-            plant_type: typeRef.current.value,
-            watering_frequency: props.freq,
+            name: this.nameRef.current.value,
+            img_id: this.props.picture,
+            height: parseInt(this.heightRef.current.value) || 0,
+            plant_type: this.typeRef.current.value,
+            watering_frequency: this.props.freq,
             last_watered_at: (new Date()).toISOString(),
         }
 
-        props.addPlant(plant)
+        this.props.addPlant(plant)
             .then(() => {
-                props.toggleForm();
+                this.props.toggleForm();
             });
     }
-
-    return (
-      <Container className={props.show ? 'show' : ''}>
-        <PlantForm>
-          <h2>Name</h2>
-          <input ref={nameRef} type="text" name="name" />
-          <h2>Type</h2>
-          <input ref={typeRef} type="text" name="type" />
-          <h2>Height</h2>
-          <span className="height-input">
-            <input ref={heightRef} type="number" name="height" />
-
-            <span>cm</span>
-          </span>
-        </PlantForm>
-
-        <FrequencyPicker>
-          <h2>I would like to water every</h2>
-          <div>
-            <button onClick={props.minusDay}>
-              <MinusIcon
-                color="white"
-                svgHeight="80%"
-                svgWidth="80%"
-                strokeWidth="1px"
+    
+    render() {
+        return (
+          <Container className={this.props.show ? 'show' : ''}>
+            <PlantForm>
+              <h2>Name</h2>
+              <input ref={this.nameRef} type="text" name="name" />
+              <h2>Type</h2>
+              <input ref={this.typeRef} type="text" name="type" />
+              <h2>Height</h2>
+              <span className="height-input">
+                <input ref={this.heightRef} type="number" name="height" />
+    
+                <span>cm</span>
+              </span>
+            </PlantForm>
+    
+            <FrequencyPicker>
+              <h2>I would like to water every</h2>
+              <div>
+                <button onClick={this.props.minusDay}>
+                  <MinusIcon
+                    color="white"
+                    svgHeight="80%"
+                    svgWidth="80%"
+                    strokeWidth="1px"
+                  />
+                </button>
+                <span>{this.props.freq}</span>
+                <button onClick={this.props.addDay}>
+                  <XIcon
+                    color="white"
+                    svgHeight="80%"
+                    svgWidth="80%"
+                    strokeWidth="1px"
+                  />
+                </button>
+              </div>
+              <h2>days</h2>
+            </FrequencyPicker>
+    
+            <PicturePicker>
+              <TriangleArrow
+              color={Colors.Primary}
+              svgWidth="12%"
+              onClick={this.props.prevPicture}
               />
-            </button>
-            <span>{props.freq}</span>
-            <button onClick={props.addDay}>
-              <XIcon
-                color="white"
-                svgHeight="80%"
-                svgWidth="80%"
-                strokeWidth="1px"
+              <img src={exampleImage} alt="plant" />
+              <TriangleArrow
+              color={Colors.Primary}
+              svgWidth="12%"
+              onClick={this.props.nextPicture}
               />
-            </button>
-          </div>
-          <h2>days</h2>
-        </FrequencyPicker>
-
-        <PicturePicker>
-          <TriangleArrow
-          color={Colors.Primary}
-          svgWidth="12%"
-          onClick={props.prevPicture}
-          />
-          <img src={exampleImage} alt="plant" />
-          <TriangleArrow
-          color={Colors.Primary}
-          svgWidth="12%"
-          onClick={props.nextPicture}
-          />
-        </PicturePicker>
-
-        <AddButton onClick={addPlant}>Add</AddButton>
-      </Container>
-    );
+            </PicturePicker>
+    
+            <AddButton onClick={this.addPlant}>Add</AddButton>
+          </Container>
+        );
+    }
 }
 
 function mapStateToProps(state) {
