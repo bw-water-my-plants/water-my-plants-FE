@@ -15,7 +15,8 @@ const Card = styled.li`
     justify-content: space-between;
     padding: 0;
     margin: 0 auto;
-
+    transition: all 0.3s;
+    transition-timing-function: ease-in-out;
     ${props => {
         if(!props.closed) {
             return(`
@@ -31,7 +32,8 @@ const PlantProfile = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    transition: all 0.3s;
+    transition-timing-function: ease-in-out;
     ${props => {
         if(!props.closed) {
             return(`
@@ -57,7 +59,7 @@ const PlantProfile = styled.div`
         }
     }}
 `;
-const LearnMore = styled.button`
+const Edit = styled.button`
     background: none;
     border: none;
     color: ${Colors.Tertiary};
@@ -70,7 +72,6 @@ const InfoBox = styled.div`
     align-items: center;
     justify-content: center;
     height: 100%;
-
     ${props => {
         if(props.closed) {
             return(`
@@ -191,14 +192,17 @@ const WaterMe = styled.button`
     }
 `;
 export default function PlantCard(props) {
+    const expand = () => {
+        props.expandPlant(props.plant.plant_id);
+    }
     return(
-        <Card>
-            <PlantProfile>
-                <PlantImage imgUrl={exampleImage}/>
+        <Card closed={!props.open} onClick={expand}>
+            <PlantProfile closed={!props.open}>
+                <PlantImage imgUrl={exampleImage} closed={!props.open}/>
                 <MidContainer>
                     <PlantName>
-                        <h2>Plant Name</h2>
-                        <h3>Species Name</h3>
+                        <h2>{props.plant.name}</h2>
+                        <h3>{props.plant.plant_type}</h3>
                     </PlantName>
                     <WaterMe>
                         <WaterOverlay svgHeight='90%' svgWidth='100%'/>
@@ -207,11 +211,11 @@ export default function PlantCard(props) {
                     </MidContainer>
             </PlantProfile>
 
-            <InfoBox>
-                <LearnMore>Learn more...</LearnMore>
+            <InfoBox closed={!props.open}>
+                <Edit>Edit...</Edit>
                 <InfoItem>
                     <HeightIcon svgHeight='30%'strokeWidth='0px' color={Colors.Tertiary}/>
-                    <span>12 cm</span>
+                    <span>{props.plant.height} cm</span>
                 </InfoItem>
                 <InfoItem>
                     <CupIcon svgHeight='40%' strokeWidth='18px' color={Colors.Tertiary}/>
