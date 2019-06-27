@@ -49,7 +49,7 @@ export function MinusIcon(props) {
       {...props}
     >
       <g>
-        <line x1="0.433716" y1="0.674679" x2="31.759" y2="0.674679"/>
+        <line className='paths' x1="0.433716" y1="0.674679" x2="31.759" y2="0.674679"/>
       </g>
     </PathSVG>
   );

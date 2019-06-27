@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Colors from '../../styling/colors';
+import { XIcon, MinusIcon } from '../Vectors/Elements';
 
 const Container = styled.div`
     height: 100%;
@@ -52,6 +53,42 @@ const PlantForm = styled.form`
 
 `;
 
+const FrequencyPicker = styled.div`
+    height: 30%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    > div{
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    h2{
+        font-size: 1.8rem;
+    }
+    span{
+        font-size: 3.6rem;
+    }
+    button{
+        height: 5rem;
+        width: 5rem;
+        background:none;
+        background-color:${Colors.Primary};
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        &:focus{
+            outline: none;
+        }
+    }
+`;
+
 export function AddPlant(props) {
 
     return (
@@ -77,6 +114,20 @@ export function AddPlant(props) {
                     <span>cm</span>
                 </span>
             </PlantForm>
+
+            <FrequencyPicker>
+                <h2>I would like to water</h2>
+                <div>
+                    <button>
+                        <MinusIcon color='white' svgHeight='80%' svgWidth='80%' strokeWidth='1px'/>
+                    </button>
+                    <span>2</span>
+                    <button>
+                        <XIcon color='white' svgHeight='80%' svgWidth='80%' strokeWidth='1px'/>
+                    </button>
+                </div>
+                <h2>days a week</h2>
+            </FrequencyPicker>
         </Container>
     );
 }
