@@ -168,7 +168,7 @@ const MidContainer = styled.div`
 `;
 const WaterMe = styled.button`
     background: none;
-    background-color: white;
+    background-color: #0097E2;
     padding: 0.8rem 6.4rem;
     color: ${Colors.Light};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -215,14 +215,16 @@ export default function PlantCard(props) {
                         <h3>{props.plant.plant_type}</h3>
                     </PlantName>
                     <WaterMe onClick={water}>
-                        <WaterOverlay svgHeight='90%' svgWidth='100%'/>
                         <span>Water Me</span>
                     </WaterMe>
                     </MidContainer>
             </PlantProfile>
 
             <InfoBox closed={!props.open}>
-                <Edit onClick={edit}>Edit...</Edit>
+                <InfoItem>
+                    <Edit onClick={edit}>Edit...</Edit>
+                    <Edit>Delete...</Edit>
+                </InfoItem>
                 <InfoItem>
                     <HeightIcon svgHeight='30%'strokeWidth='0px' color={Colors.Tertiary}/>
                     <span>{props.plant.height} cm</span>

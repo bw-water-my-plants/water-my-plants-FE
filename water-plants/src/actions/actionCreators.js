@@ -35,6 +35,18 @@ export const fetchPlants = () => dispatch => {
         });
 }
 
+export const deletePlant = (id) => dispatch => {
+    return axiosWithAuth()
+        .delete(CreateAPIUrl(`plants/${id}`))
+        .then(res => {
+            dispatch({ type: types.POST_SUCCESS });
+            dispatch(fetchPlants());
+        })
+        .catch(error => {
+            dispatch(setError(error.message));
+        });
+}
+
 export const addPlant = (data) => dispatch => {
     return axiosWithAuth()
         .post(CreateAPIUrl('plants'), data)
