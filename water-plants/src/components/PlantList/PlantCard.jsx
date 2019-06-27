@@ -205,6 +205,10 @@ export default function PlantCard(props) {
         e.stopPropagation();
         props.waterPlant(props.plant.plant_id);
     }
+    const deletePlant = (e) => {
+        e.stopPropagation();
+        props.deletePlant(props.plant.plant_id);
+    }
     return(
         <Card closed={!props.open}>
             <PlantProfile closed={!props.open}>
@@ -223,7 +227,7 @@ export default function PlantCard(props) {
             <InfoBox closed={!props.open}>
                 <InfoItem>
                     <Edit onClick={edit}>Edit...</Edit>
-                    <Edit>Delete...</Edit>
+                    <Edit onClick={deletePlant}>Delete...</Edit>
                 </InfoItem>
                 <InfoItem>
                     <HeightIcon svgHeight='30%'strokeWidth='0px' color={Colors.Tertiary}/>

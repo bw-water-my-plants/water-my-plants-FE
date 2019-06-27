@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux"
-import { fetchPlants, setCurrentPlant, toggleForm, waterPlant } from '../../actions/actionCreators';
+import { fetchPlants, setCurrentPlant, toggleForm, waterPlant, deletePlant } from '../../actions/actionCreators';
 import styled from 'styled-components';
 import PlantCard from './PlantCard';
 
@@ -42,6 +42,7 @@ export class PlantList extends React.Component {
                             editPlant={this.props.setCurrentPlant}
                             showForm={this.props.toggleForm}
                             waterPlant={this.props.waterPlant}
+                            deletePlant={this.props.deletePlant}
                             />;
                     })
                 }
@@ -65,5 +66,6 @@ export default connect(
         setCurrentPlant,
         toggleForm,
         waterPlant,
+        deletePlant,
     }
 )(PlantList);
