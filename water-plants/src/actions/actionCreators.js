@@ -120,3 +120,9 @@ export const toggleForm = () => {
         type: types.MENU_FORM_TOGGLE,
     }
 }
+
+export const waterPlant = (id) => dispatch => {
+    dispatch(updatePlant(id, {
+        last_watered_at: (new Date()).toISOString(),
+    }))
+}
