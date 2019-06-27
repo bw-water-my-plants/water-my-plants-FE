@@ -213,7 +213,13 @@ export default function PlantCard(props) {
     const calculateDays = () => {
         const now = (new Date()).getTime();
         const wateringDate = Date.parse(props.plant.next_watering_at);
-        return Math.floor( wateringDate - now / (1000 * 60 * 60 * 24));
+        const delta = wateringDate - now;
+        const days = Math.floor(delta / (1000 * 60 * 60 * 24))
+        return days;
+    }
+
+    const calculatePercentage = () => {
+        return Math.floor((calculateDays() / props.plant.watering_frequency) * 100);
     }
     return(
         <Card closed={!props.open}>
@@ -241,7 +247,7 @@ export default function PlantCard(props) {
                 </InfoItem>
                 <InfoItem>
                     <CupIcon svgHeight='40%' strokeWidth='18px' color={Colors.Tertiary}/>
-                    <span>60%</span>
+                    <span>{calculatePercentage()}%</span>
                 </InfoItem>
                 <InfoItem>
                     <ClockIcon svgHeight='40%' strokeWidth='18px' color={Colors.Tertiary}/>
