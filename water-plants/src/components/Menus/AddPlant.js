@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Colors from '../../styling/colors';
 import { XIcon, MinusIcon, TriangleArrow } from '../Vectors/Elements';
 import exampleImage from '../../assets/images/example_plant.jfif';
-import { addDay, minusDay, nextPicture, prevPicture, updatePlant, addPlant } from '../../actions/actionCreators';
+import { addDay, minusDay, nextPicture, prevPicture, updatePlant, addPlant, toggleForm } from '../../actions/actionCreators';
 import { connect } from 'react-redux';
 
 const Container = styled.div`
@@ -20,10 +20,10 @@ const Container = styled.div`
     bottom: 4.5rem;
     padding-top: 9rem;
     transform: translateY(110%);
-    transition: all 0.5s;
+    transition: all 0.3s;
     transition-timing-function: ease-in-out;
 
-    .show{
+    &.show{
         transform: translateY(0%);
     }
 `;
@@ -147,11 +147,14 @@ export function AddPlant(props) {
             last_watered_at: (new Date()).toISOString(),
         }
 
-        props.addPlant(plant);
+        props.addPlant(plant)
+            .then(() => {
+                props.toggleForm();
+            });
     }
 
     return (
-      <Container>
+      <Container className={props.show ? 'show' : ''}>
         <PlantForm>
           <h2>Name</h2>
           <input ref={nameRef} type="text" name="name" />
@@ -214,6 +217,7 @@ function mapStateToProps(state) {
       freq: state.form.freq,
       picture: state.form.picture,
       currentPlant: state.form.currentPlant,
+      show: state.menus.formShow,
     };
   }
 export default connect(
@@ -224,6 +228,7 @@ export default connect(
         nextPicture,
         prevPicture,
         updatePlant,
-        addPlant
+        addPlant,
+        toggleForm,
     }
 )(AddPlant);
