@@ -54,7 +54,9 @@ export const deletePlant = (id) => dispatch => {
         });
 }
 
-export const addPlant = (data) => dispatch => {
+
+export const addPlant = data => dispatch => {
+
     return axiosWithAuth()
         .post(CreateAPIUrl('plants'), data)
         .then(res => {
@@ -145,7 +147,6 @@ export const waterPlant = (id) => dispatch => {
         last_watered_at: (new Date()).toISOString(),
     }))
 }
-        
 
 
 export const fetchProfile = () => dispatch => {
