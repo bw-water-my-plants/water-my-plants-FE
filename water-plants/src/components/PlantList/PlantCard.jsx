@@ -201,6 +201,10 @@ export default function PlantCard(props) {
         props.editPlant(props.plant);
         props.showForm();
     }
+    const water = (e) => {
+        e.stopPropagation();
+        props.waterPlant(props.plant.plant_id);
+    }
     return(
         <Card closed={!props.open}>
             <PlantProfile closed={!props.open}>
@@ -210,7 +214,7 @@ export default function PlantCard(props) {
                         <h2>{props.plant.name}</h2>
                         <h3>{props.plant.plant_type}</h3>
                     </PlantName>
-                    <WaterMe>
+                    <WaterMe onClick={water}>
                         <WaterOverlay svgHeight='90%' svgWidth='100%'/>
                         <span>Water Me</span>
                     </WaterMe>
