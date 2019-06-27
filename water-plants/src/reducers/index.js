@@ -15,10 +15,17 @@ const apiState = {
     loggedIn: false,
 }
 
+const formState = {
+    freq: 2,
+    picture: 1,
+    currentPlant: null,
+}
+
 
 export default combineReducers({
     plants: plantsReducer,
     api: apiReducer,
+    form: formReducer,
 });
 
 
@@ -26,6 +33,22 @@ export function plantsReducer(state = plantState, action) {
     switch(action.type) {
         case(types.SET_PLANTS):
             return { ...state, plants: action.payload };
+        default:
+            return state;
+    }
+}
+export function formReducer(state = formState, action) {
+    switch(action.type) {
+        case(types.PLANT_ADD_DAY):
+            return { ...state, freq: state.freq + 1};
+        case(types.PLANT_MINUS_DAY):
+            return { ...state, freq: state.freq - 1};
+        case(types.PLANT_NEXT_PICTURE):
+            return { ...state, picture: state.picture + 1};
+        case(types.PLANT_PREV_PICTURE):
+            return { ...state, picture: state.picture - 1};
+        case(types.PLANT_SET_PLANT):
+            return { ...state, currentPlant: action.payload};
         default:
             return state;
     }
