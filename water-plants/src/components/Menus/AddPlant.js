@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Colors from '../../styling/colors';
 import { XIcon, MinusIcon, TriangleArrow } from '../Vectors/Elements';
 import exampleImage from '../../assets/images/example_plant.jfif';
+import { addDay, minusDay, nextPicture, prevPicture, updatePlant, addPlant } from '../../actions/actionCreators';
+import { connect } from 'react-redux';
 
 const Container = styled.div`
     height: 100%;
@@ -160,3 +162,23 @@ export function AddPlant(props) {
         </Container>
     );
 }
+
+function mapStateToProps(state) {
+    return {
+      posting: state.api.posting,
+      freq: state.form.freq,
+      picture: state.form.picture,
+      currentPlant: state.form.currentPlant,
+    };
+  }
+export default connect(
+    mapStateToProps,
+    {
+        addDay,
+        minusDay,
+        nextPicture,
+        prevPicture,
+        updatePlant,
+        addPlant
+    }
+)(AddPlant);
