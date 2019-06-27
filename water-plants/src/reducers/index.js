@@ -1,10 +1,13 @@
 import { combineReducers } from 'redux';
 import * as types from '../actions/actionTypes';
 
-
 const plantState = {
-    plants: [],
-}
+    plants: []
+};
+
+const profileState = {
+    profile: {}
+};
 
 const apiState = {
     fetching: false,
@@ -25,18 +28,17 @@ const menuState = {
     formShow: false,
 }
 
-
 export default combineReducers({
     plants: plantsReducer,
     api: apiReducer,
     form: formReducer,
     menus:menuReducer,
+    profile: profileReducer
 });
 
-
 export function plantsReducer(state = plantState, action) {
-    switch(action.type) {
-        case(types.SET_PLANTS):
+    switch (action.type) {
+        case types.SET_PLANTS:
             return { ...state, plants: action.payload };
         default:
             return state;
@@ -72,50 +74,59 @@ export function menuReducer(state = menuState, action) {
     }
 }
 
-export function apiReducer(state = apiState, action) { 
-    switch(action.type) {
-        case(types.FETCHING_PLANTS):
+export function profileReducer(state = profileState, action) {
+    switch (action.type) {
+        case types.SET_PROFILE:
+            return { ...state, profile: action.payload };
+        default:
+            return state;
+    }
+}
+
+export function apiReducer(state = apiState, action) {
+    switch (action.type) {
+        case types.FETCHING_PLANTS:
             return { ...state, fetching: true };
-        case(types.FETCH_SUCCESS):
+        case types.FETCH_SUCCESS:
             return {
                 ...state,
                 fetching: true,
-                error: null,
+                error: null
             };
-        case(types.API_ERROR):
+        case types.API_ERROR:
             return {
                 ...state,
                 fetching: false,
                 posting: false,
-                error: action.payload,
+                error: action.payload
             };
-        case(types.POST_SUCCESS):
+        case types.POST_SUCCESS:
             return {
                 ...state,
                 posting: false,
-                error: null,
+                error: null
             };
-        case(types.LOGGING_IN):
+        case types.LOGGING_IN:
             return {
                 ...state,
                 loggedIn: false,
                 loggingIn: true,
-                loginFail: false,
+                loginFail: false
             };
-        case(types.LOGIN_SUCCESS):
+        case types.LOGIN_SUCCESS:
             return {
                 ...state,
                 loggedIn: true,
                 loggingIn: false,
-                loginFail: false,
+                loginFail: false
             };
-        case(types.LOGIN_FAIL):
+        case types.LOGIN_FAIL:
             return {
                 ...state,
                 loggedIn: false,
                 loggingIn: false,
-                loginFail: true,
-            }
+                loginFail: true
+            };
         default:
             return state;
     }
