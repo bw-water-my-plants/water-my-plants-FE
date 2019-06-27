@@ -53,7 +53,11 @@ export function formReducer(state = formState, action) {
         case(types.PLANT_PREV_PICTURE):
             return { ...state, picture: state.picture - 1};
         case(types.PLANT_SET_PLANT):
-            return { ...state, currentPlant: action.payload, freq: parseInt(action.payload.watering_frequency), picture: parseInt(action.payload.img_id)};
+            if(action.payload !== null){
+                return { ...state, currentPlant: action.payload, freq: parseInt(action.payload.watering_frequency), picture: parseInt(action.payload.img_id)};
+            } else {
+                return { ...state, currentPlant: null };
+            }
         default:
             return state;
     }

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Colors from '../../styling/colors';
 import { XIcon, MinusIcon, TriangleArrow } from '../Vectors/Elements';
 import exampleImage from '../../assets/images/example_plant.jfif';
-import { addDay, minusDay, nextPicture, prevPicture, updatePlant, addPlant, toggleForm } from '../../actions/actionCreators';
+import { addDay, minusDay, nextPicture, prevPicture, updatePlant, addPlant, toggleForm, setCurrentPlant } from '../../actions/actionCreators';
 import { connect } from 'react-redux';
 
 const Container = styled.div`
@@ -139,11 +139,15 @@ export class AddPlant extends React.Component {
     heightRef = React.createRef();
 
     componentDidUpdate(prevProps) {
-        if (this.props.currentPlant){
-            if ( prevProps.currentPlant !== this.props.currentPlant) {
+        if ( prevProps.currentPlant !== this.props.currentPlant) {
+            if(this.props.currentPlant) {
                 this.nameRef.current.value = this.props.currentPlant.name;
                 this.typeRef.current.value = this.props.currentPlant.plant_type;
                 this.heightRef.current.value = this.props.currentPlant.height;
+            } else {
+                this.nameRef.current.value = '';
+                this.typeRef.current.value = '';
+                this.heightRef.current.value = '';
             }
         }
     }
@@ -162,6 +166,7 @@ export class AddPlant extends React.Component {
             this.props.updatePlant(this.props.currentPlant.plant_id, plant)
                 .then(() => {
                     this.props.toggleForm();
+                    this.props.setCurrentPlant(null);
                 });
         } else {
             this.props.addPlant(plant)
@@ -251,5 +256,6 @@ export default connect(
         updatePlant,
         addPlant,
         toggleForm,
+        setCurrentPlant,
     }
 )(AddPlant);
