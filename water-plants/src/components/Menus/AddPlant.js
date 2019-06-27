@@ -158,10 +158,18 @@ export class AddPlant extends React.Component {
             last_watered_at: (new Date()).toISOString(),
         }
 
-        this.props.addPlant(plant)
-            .then(() => {
-                this.props.toggleForm();
-            });
+        if (this.props.currentPlant) {
+            this.props.updatePlant(this.props.currentPlant.plant_id, plant)
+                .then(() => {
+                    this.props.toggleForm();
+                });
+        } else {
+            this.props.addPlant(plant)
+                .then(() => {
+                    this.props.toggleForm();
+                });
+        }
+
     }
     
     render() {
@@ -218,7 +226,7 @@ export class AddPlant extends React.Component {
               />
             </PicturePicker>
     
-            <AddButton onClick={this.addPlant}>Add</AddButton>
+            <AddButton onClick={this.addPlant}>{this.props.currentPlant ? 'Update' : 'Add'}</AddButton>
           </Container>
         );
     }
