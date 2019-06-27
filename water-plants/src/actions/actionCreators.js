@@ -82,3 +82,35 @@ export const register = ({ email, username, password, phone_number}) => dispatch
         dispatch(setError(error.message));
     });
 }
+
+
+export const addDay = () => {
+    return {
+        type: types.PLANT_ADD_DAY,
+    }
+}
+
+export const minusDay = () => {
+    return {
+        type: types.PLANT_MINUS_DAY,
+    }
+}
+
+export const nextPicture = () => {
+    return {
+        type: types.PLANT_NEXT_PICTURE,
+    }
+}
+
+export const prevPicture = () => {
+    return {
+        type: types.PLANT_PREV_PICTURE,
+    }
+}
+
+export const setCurrentPlant = (plant) => {
+    return {
+        type: types.PLANT_SET_PLANT,
+        payload: plant,
+    }
+}
