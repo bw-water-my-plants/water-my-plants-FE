@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Colors from '../../styling/colors';
-import { XIcon, MinusIcon } from '../Vectors/Elements';
+import { XIcon, MinusIcon, TriangleArrow } from '../Vectors/Elements';
+import exampleImage from '../../assets/images/example_plant.jfif';
 
 const Container = styled.div`
     height: 100%;
@@ -15,6 +16,7 @@ const Container = styled.div`
     font-family: 'Roboto', sans-serif;
     position: fixed;
     bottom: 4.5rem;
+    padding-top: 9rem;
 `;
 
 const PlantForm = styled.form`
@@ -95,6 +97,19 @@ const PicturePicker = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    img{
+        height: 80%;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    svg{
+        filter: drop-shadow( 0px 4px 2px rgba(0, 0, 0, 0.25));
+    }
+    svg:last-child{
+        transform: translateY(-20%) rotate(180deg);
+        filter: drop-shadow( 0px -4px 2px rgba(0, 0, 0, 0.25));
+    }
+
 `;
 
 export function AddPlant(props) {
@@ -136,6 +151,12 @@ export function AddPlant(props) {
                 </div>
                 <h2>days a week</h2>
             </FrequencyPicker>
+
+            <PicturePicker>
+                <TriangleArrow color={Colors.Primary} svgWidth='12%'/>
+                <img src={exampleImage} alt="plant"/>
+                <TriangleArrow color={Colors.Primary} svgWidth='12%'/>
+            </PicturePicker>
         </Container>
     );
 }
