@@ -174,6 +174,7 @@ export class AddPlant extends React.Component {
                 });
         }
 
+
     }
     
     render() {
@@ -222,7 +223,8 @@ export class AddPlant extends React.Component {
               svgWidth="12%"
               onClick={this.props.prevPicture}
               />
-              <img src={images[this.props.picture]} alt="plant" />
+            <img src={images[this.props.picture]} alt="plant" />
+
               <TriangleArrow
               color={Colors.Primary}
               svgWidth="12%"

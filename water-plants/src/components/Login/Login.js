@@ -1,13 +1,17 @@
 import React from "react";
 import styled from "styled-components"
 
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button } from 'antd';
+import { Link } from "react-router-dom";
 
 
 const Overall = styled.div`
     margin: 0 auto;
-    padding-top: 40px;
+    padding-top: 200px;
     width: 500px;
+    @media (max-width: 600px){
+      width: 300px;
+    }
   `
 
 class NormalLoginForm extends React.Component {
@@ -16,6 +20,9 @@ class NormalLoginForm extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         this.props.login(values.email, values.password)
+      
+          this.props.form.resetFields()
+                               
         .then(() => {
           let route = '/';
           if (this.props.location.state) {
@@ -55,10 +62,10 @@ class NormalLoginForm extends React.Component {
           )}
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="login-form-button">
+          <Button type="primary" htmlType="submit" className="login-form-button" >
             Log in
           </Button>
-          Or <a href="">register now!</a>
+          Or <Link to="/signup">register now!</Link>
         </Form.Item>
       </Form>
         </Overall>

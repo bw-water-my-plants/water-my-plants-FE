@@ -209,7 +209,6 @@ export default function PlantCard(props) {
         e.stopPropagation();
         props.deletePlant(props.plant.plant_id);
     }
-
     const calculateDays = () => {
         const now = (new Date()).getTime();
         const wateringDate = Date.parse(props.plant.next_watering_at);
@@ -221,6 +220,7 @@ export default function PlantCard(props) {
     const calculatePercentage = () => {
         return Math.floor((calculateDays() / props.plant.watering_frequency) * 100);
     }
+
     return(
         <Card closed={!props.open}>
             <PlantProfile closed={!props.open}>

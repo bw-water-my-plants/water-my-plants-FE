@@ -27,7 +27,6 @@ const formState = {
 const menuState = {
     formShow: false,
 }
-
 export default combineReducers({
     plants: plantsReducer,
     api: apiReducer,
