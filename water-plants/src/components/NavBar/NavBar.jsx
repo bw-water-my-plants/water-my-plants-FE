@@ -14,12 +14,12 @@ class NavBar extends React.Component {
   render() {
     return (
       <div className="topnav" id="myTopnav">
-        <Link >
+        <Link to='/'>
           <img src="https://img.icons8.com/office/30/000000/wet.png" />
         </Link>
 
         <Link to="/profile">Profile</Link>
-        <Link to="/signout">Sign out</Link>
+        <Link to="/login">Sign out</Link>
 
         <a
           href="javascript:void(0);"

@@ -6,6 +6,7 @@ import PlantCard from './PlantCard';
 
 const StyledList = styled.ul`
     padding-bottom: 5rem;
+    margin-top: 1rem;
     li{
         margin-bottom: 2rem;
     }

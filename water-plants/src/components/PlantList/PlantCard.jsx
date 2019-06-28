@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Colors from '../../styling/colors';
-import exampleImage from '../../assets/images/example_plant.jfif';
+import images from '../Images';
 import { ClockIcon, CupIcon, HeightIcon } from '../Vectors/InfoIcons';
 import { WaterOverlay } from '../Vectors/Elements';
 
@@ -224,7 +224,7 @@ export default function PlantCard(props) {
     return(
         <Card closed={!props.open}>
             <PlantProfile closed={!props.open}>
-                <PlantImage imgUrl={exampleImage} closed={!props.open} onClick={expand}/>
+                <PlantImage imgUrl={images[props.plant.img_id]} closed={!props.open} onClick={expand}/>
                 <MidContainer>
                     <PlantName>
                         <h2>{props.plant.name}</h2>

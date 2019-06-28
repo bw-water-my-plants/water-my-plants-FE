@@ -176,6 +176,18 @@ export class AddPlant extends React.Component {
 
 
     }
+
+    nextImage = () => {
+        if(this.props.picture < (images.length - 1)) {
+            this.props.nextPicture()
+        }
+    }
+
+    prevImage = () => {
+        if(this.props.picture > 0) {
+            this.props.prevPicture()
+        }
+    }
     
     render() {
         return (
@@ -221,14 +233,14 @@ export class AddPlant extends React.Component {
               <TriangleArrow
               color={Colors.Primary}
               svgWidth="12%"
-              onClick={this.props.prevPicture}
+              onClick={this.prevImage}
               />
             <img src={images[this.props.picture]} alt="plant" />
 
               <TriangleArrow
               color={Colors.Primary}
               svgWidth="12%"
-              onClick={this.props.nextPicture}
+              onClick={this.nextImage}
               />
             </PicturePicker>
     
