@@ -17,6 +17,7 @@ export default class ProfileTop extends React.Component {
 }
 
 const SDProfileBlock = styled.div`
+    font-family: 'Roboto', sans-serif;
     width: 100%;
     height: 55vh;
     display: flex;

@@ -101,6 +101,7 @@ export default class ProfileInfo extends React.Component {
 }
 
 const SDProfileBlock = styled.div`
+    font-family: 'Roboto', sans-serif;
     width: 100%;
     height: 45vh;
     display: flex;

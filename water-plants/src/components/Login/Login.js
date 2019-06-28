@@ -20,9 +20,6 @@ class NormalLoginForm extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         this.props.login(values.email, values.password)
-      
-          this.props.form.resetFields()
-                               
         .then(() => {
           let route = '/';
           if (this.props.location.state) {

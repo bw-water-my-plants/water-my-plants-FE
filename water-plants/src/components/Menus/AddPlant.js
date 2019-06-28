@@ -162,7 +162,7 @@ export class AddPlant extends React.Component {
         }
 
         if (this.props.currentPlant) {
-            this.props.updatePlant(this.props.currentPlant.plant_id, plant)
+            this.props.updatePlant(this.props.currentPlant.plant_id, { ...plant, last_watered_at: this.props.currentPlant.last_watered_at})
                 .then(() => {
                     this.props.toggleForm();
                     this.props.setCurrentPlant(null);
@@ -175,6 +175,18 @@ export class AddPlant extends React.Component {
         }
 
 
+    }
+
+    addDay = () => {
+        if(this.props.freq < 30) {
+            this.props.addDay();
+        }
+    }
+
+    minusDay = () => {
+        if(this.props.freq > 0) {
+            this.props.minusDay();
+        }
     }
 
     nextImage = () => {
@@ -208,7 +220,7 @@ export class AddPlant extends React.Component {
             <FrequencyPicker>
               <h2>I would like to water every</h2>
               <div>
-                <button onClick={this.props.minusDay}>
+                <button onClick={this.minusDay}>
                   <MinusIcon
                     color="white"
                     svgHeight="80%"
@@ -217,7 +229,7 @@ export class AddPlant extends React.Component {
                   />
                 </button>
                 <span>{this.props.freq}</span>
-                <button onClick={this.props.addDay}>
+                <button onClick={this.addDay}>
                   <XIcon
                     color="white"
                     svgHeight="80%"
