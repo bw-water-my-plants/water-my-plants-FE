@@ -2,7 +2,7 @@ import React from "react";
 import SignupPage from "./components/Signup/SignupPage";
 import LoginPage from './components/Login/LoginPage';
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import thunk from 'redux-thunk';
 import "./App.css";
 import './styling/reset.css';
@@ -29,10 +29,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const store = createStore(
   combinedReducers,
   {},
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  ),
+  applyMiddleware(thunk)
 );
 
 function App() {
