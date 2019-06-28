@@ -1,0 +1,18 @@
+export const SET_PLANTS = 'SET_PLANTS';
+export const SET_PROFILE = 'SET_PROFILE';
+export const FETCHING_PLANTS = 'FETCHING_PLANTS';
+export const LOGGING_IN = 'LOGGIN_IN';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const POST_SUCCESS = 'POST_SUCCESS';
+export const FETCH_SUCCESS = 'FETCH_SUCCESS';
+export const API_ERROR = 'API_ERROR';
+
+
+export const PLANT_ADD_DAY = 'PLANT_ADD_DAY';
+export const PLANT_MINUS_DAY = 'PLANT_MINUS_DAY';
+export const PLANT_NEXT_PICTURE = 'PLANT_NEXT_PICTURE';
+export const PLANT_PREV_PICTURE = 'PLANT_PREV_PICTURE';
+export const PLANT_SET_PLANT = 'PLANT_SET_PLANT';
+
+export const MENU_FORM_TOGGLE = 'MENU_FORM_TOGGLE';
