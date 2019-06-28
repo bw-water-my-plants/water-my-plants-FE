@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components"
 
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button } from 'antd';
 import { Link } from "react-router-dom";
 
 
